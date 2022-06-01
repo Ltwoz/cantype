@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;1,200;1,300&display=swap');
+
+html {
+    font-family: 'Roboto-mono', monospace;
+    background: #3c4756;
+    color: #f44c7f;
+}
+
+@layer components {
+    .logo-text {
+        @apply text-[28px] transition-all font-bold
+    }
+    .centerContent {
+        @apply content-center w-full max-w-[1000px] min-h-[100vh] p-[2rem]
+    }
+    .top {
+        @apply container flex items-center justify-center select-none cursor-pointer
+    }
+    .type-box {
+        @apply flex flex-wrap overflow-hidden items-center select-none h-[156px] text-gray-500
+    }
+    .word {
+        @apply relative m-1 text-2xl
+    }
+    .wrong {
+        @apply border-b-2 text-red-600
+    }
+    .right {
+        @apply text-green-600
+    }
+    .extra {
+        @apply opacity-60
+    }
+
+    #caret {
+        transition: left 0.1s ease;
+        margin-left: -7.29165px;
+		position: absolute;
+        color: #fff;
+    }
+    #caret.blink {
+        animation: blink 1.5s infinite 1s;
+    }
+    @keyframes blink {
+        0%,
+        100%{
+            opacity: 1;
+        }
+        50%{
+            opacity: 0;
+        }
+    }
+}

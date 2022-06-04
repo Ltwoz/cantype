@@ -1,0 +1,52 @@
+.middle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.type-box {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: center;
+    user-select: none;
+    height: 156px;
+
+    .word {
+        position: relative;
+        margin: 0.25rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+
+        &.wrong {
+            color: red;
+            border-bottom: 2px solid;
+        }
+    }
+    
+
+    .extra {
+        opacity: 0.6;
+    }
+
+    #caret {
+        transition: left 0.1s ease;
+        margin-left: -7.29165px;
+		position: absolute;
+        color: #fff;
+
+        &.blink {
+            animation: blink 1.5s infinite 1s;
+        }
+    }
+    
+    @keyframes blink {
+        0%,
+        100%{
+            opacity: 1;
+        }
+        50%{
+            opacity: 0;
+        }
+    }
+}

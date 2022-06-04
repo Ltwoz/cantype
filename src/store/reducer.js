@@ -10,6 +10,7 @@ import {
     SET_WORDLIST,
     SET_REF,
     SET_CARET_REF,
+    SET_THEME
 } from "./actions";
 
 export const initialState = {
@@ -25,6 +26,9 @@ export const initialState = {
         activeWordRef: null,
         caretRef: null,
     },
+    preference: {
+        theme: ""
+    }
 };
 
 // Timer Reducer
@@ -104,7 +108,17 @@ const wordReducer = (state = initialState.word, { type, payload }) => {
     }
 };
 
+const preferenceReducer = (state = initialState.preference, {type, payload}) => {
+    switch (type) {
+        case SET_THEME:
+            return {...state, theme: payload};
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     time: timerReducer,
     word: wordReducer,
+    preferences: preferenceReducer,
 });

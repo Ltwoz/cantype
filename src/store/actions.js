@@ -8,6 +8,7 @@ export const PREV_WORD = "PREVWORD";
 export const SET_WORDLIST = "SETWORDLIST";
 export const SET_REF = "SETREF";
 export const SET_CARET_REF = "SETCARETREF";
+export const SET_THEME = "SETTHEME";
 
 // Timer Actions
 export const timerDecrement = () => ({type: TIMER_DECREMENT});
@@ -23,3 +24,6 @@ export const backtrackWord = (payload) => ({type: PREV_WORD, payload});
 export const setWordList = (payload) => ({type: SET_WORDLIST, payload});
 export const setRef = (payload) => ({type: SET_REF, payload});
 export const setCaretRef = (payload) => ({type: SET_CARET_REF, payload});
+
+// Preferences Actions
+export const setTheme = (payload) => ({type: SET_THEME, payload});

@@ -1,2 +1,2 @@
 ## cantype 
-Typing Test
+Typing Test.

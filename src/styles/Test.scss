@@ -4,6 +4,10 @@
     flex-direction: column;
 }
 
+.timer {
+    color: #DA0037;
+}
+
 .type-box {
     display: flex;
     flex-wrap: wrap;
@@ -24,6 +28,13 @@
         }
     }
     
+    .right {
+        color: #444444;
+    }
+
+    .wrong {
+        color: #DA0037;
+    }
 
     .extra {
         opacity: 0.6;

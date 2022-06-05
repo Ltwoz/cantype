@@ -8,7 +8,9 @@ function Test() {
         time: { timer },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
-    const extraLetters = typeof typedWord === "string" && typedWord.slice(currWord.length).split("");
+    const extraLetters =
+        typeof typedWord === "string" &&
+        typedWord.slice(currWord.length).split("");
     const activeWord = useRef(null);
     const caretRef = useRef(null);
 
@@ -18,7 +20,7 @@ function Test() {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className="typingTest">
             <div className="timer">{timer}</div>
             <div className="type-box">
                 {wordList.map((word, idx) => {

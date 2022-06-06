@@ -6,6 +6,7 @@
 
 .timer {
     color: #DA0037;
+    font-size: 1.5rem;
 }
 
 .type-box {
@@ -14,11 +15,12 @@
     overflow: hidden;
     align-items: center;
     user-select: none;
-    height: 156px;
+    height: 145px;
+    
 
     .word {
         position: relative;
-        margin: 0.25rem;
+        margin: 10px 0.35rem;
         font-size: 1.5rem;
         line-height: 1.5rem;
 
@@ -43,8 +45,9 @@
     #caret {
         transition: left 0.1s ease;
         margin-left: -7.29165px;
+        width: 2px;
 		position: absolute;
-        color: #fff;
+        color: #DA0037;
 
         &.blink {
             animation: blink 1.5s infinite 1s;

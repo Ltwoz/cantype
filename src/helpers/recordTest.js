@@ -62,7 +62,7 @@ export const recordTest = (key, ctrlKey) => {
 
     switch (key) {
         case "Tab":
-            if (timer !== 60 || timerId) {
+            if (/* timer !== 60 || */ timerId) {
                 resetTest();
                 document.getElementsByClassName("word")[0].scrollIntoView();
             }

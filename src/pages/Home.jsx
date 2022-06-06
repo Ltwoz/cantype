@@ -5,7 +5,6 @@ import { useDispatch, useSelector} from "react-redux";
 import { setWordList } from "../store/actions"
 import { recordTest } from "../helpers/recordTest";
 import { setTimerId } from "../store/actions"
-import Timer from "../components/Timer";
 
 function Home() {
     const {

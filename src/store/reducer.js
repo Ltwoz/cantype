@@ -15,7 +15,7 @@ import {
 
 export const initialState = {
     time: {
-        timer: 60,
+        timer: 30,
         timerId: null,
     },
     word: {

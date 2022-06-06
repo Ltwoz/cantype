@@ -20,4 +20,5 @@ export const resetTest = async () => {
     import(`../wordlist/words.json`).then((words) => {
         dispatch(setWordList(words.default));
     });
+    dispatch(timerSet(30));
 };

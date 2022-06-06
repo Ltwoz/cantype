@@ -9,58 +9,64 @@
     font-size: 1.5rem;
 }
 
-.type-box {
-    display: flex;
-    flex-wrap: wrap;
+.wordWrapper {
     overflow: hidden;
-    align-items: center;
-    user-select: none;
-    height: 145px;
+    height: 117px;
+
+    .type-box {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        align-items: center;
+        user-select: none;
+        height: 150px;
+        padding-bottom: 1em;
+        
     
-
-    .word {
-        position: relative;
-        margin: 10px 0.35rem;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-
-        &.wrong {
-            color: red;
-            border-bottom: 2px solid;
-        }
-    }
+        .word {
+            position: relative;
+            margin: 0 0.37rem 0.74rem;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
     
-    .right {
-        color: #444444;
-    }
-
-    .wrong {
-        color: #DA0037;
-    }
-
-    .extra {
-        opacity: 0.6;
-    }
-
-    #caret {
-        transition: left 0.1s ease;
-        margin-left: -7.29165px;
-        width: 2px;
-		position: absolute;
-        color: #DA0037;
-
-        &.blink {
-            animation: blink 1.5s infinite 1s;
+            &.wrong {
+                color: #DA0037;
+                border-bottom: 2px solid;
+            }
         }
-    }
+        
+        .right {
+            color: #444444;
+        }
     
-    @keyframes blink {
-        0%,
-        100%{
-            opacity: 1;
+        .wrong {
+            color: #DA0037;
         }
-        50%{
-            opacity: 0;
+    
+        .extra {
+            opacity: 0.6;
+        }
+    
+        #caret {
+            transition: left 0.1s ease;
+            margin-left: -7.29165px;
+            width: 2px;
+            position: absolute;
+            color: #DA0037;
+    
+            &.blink {
+                animation: blink 1.5s infinite 1s;
+            }
+        }
+        
+        @keyframes blink {
+            0%,
+            100%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
         }
     }
 }

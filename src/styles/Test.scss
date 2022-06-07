@@ -11,7 +11,8 @@
 
 .wordWrapper {
     overflow: hidden;
-    height: 117px;
+    height: 108px;
+    margin-top: 1rem;
 
     .type-box {
         display: flex;
@@ -19,8 +20,9 @@
         overflow: hidden;
         align-items: center;
         user-select: none;
-        height: 140px;
+        height: 156px;
         padding-bottom: 1em;
+        color: #444444;
         
     
         .word {
@@ -36,7 +38,7 @@
         }
         
         .right {
-            color: #444444;
+            color: #ededed;
         }
     
         .wrong {

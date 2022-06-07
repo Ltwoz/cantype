@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     user-select: none;
-    cursor: pointer;
 
     @media screen and (min-width: v.$small) {
         width: 100%;
@@ -22,6 +21,7 @@
     font-weight: bold;
     transition: 0.3s;
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .menu {
@@ -31,8 +31,8 @@
     width: 30%;
 
     & .button {
-        font-size: 25px;
-        padding: 0.5rem;
+        font-size: 35px;
+        margin: 0.5rem;
         display: flex;
         align-items: center;
         transition: .15s;

@@ -14,7 +14,7 @@ function Navbar() {
                     <FaKeyboard />
                 </Link>
                 <Link to="/About" className="button">
-                    <FaInfo  />
+                    <FaInfo />
                 </Link>
                 <Link to="/Theme" className="button">
                     <FaPalette />

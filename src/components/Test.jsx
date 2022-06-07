@@ -14,6 +14,8 @@ function Test() {
     const activeWord = useRef(null);
     const caretRef = useRef(null);
 
+    const nomore = 8;
+
     useEffect(() => {
         dispatch(setRef(activeWord));
         dispatch(setCaretRef(caretRef));
@@ -74,7 +76,7 @@ function Test() {
                                               return (
                                                   <span
                                                       key={char + charId}
-                                                      className="wrong extra"
+                                                      className="wrong extra"                                               // when spacebar
                                                   >
                                                       {char}
                                                   </span>

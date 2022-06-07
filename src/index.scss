@@ -29,7 +29,10 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     align-content: center;
+    justify-content: space-between;
     width: 100%;
     max-width: 1000px;
     min-height: 100vh;

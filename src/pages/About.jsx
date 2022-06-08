@@ -24,6 +24,23 @@ function About() {
                     nemo ratione!
                 </p>
             </div>
+            <div className="section">
+                <h1>bug report</h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Provident iure nobis eum nam enim, veritatis sint eligendi
+                    dolorum necessitatibus dolores?
+                </p>
+            </div>
+            <div className="section">
+                <h1>credit</h1>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Dolore dicta libero eius possimus pariatur sint velit
+                    deleniti, ut modi labore quod repellat dolor consequuntur
+                    ratione id quaerat voluptatibus doloribus ab.
+                </p>
+            </div>
         </div>
     );
 }

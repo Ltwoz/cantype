@@ -1,6 +1,7 @@
 .about {
     display: flex;
     flex-direction: column;
+    height: 1000px;
 
     .section {
         margin-bottom: 2rem;
@@ -14,14 +15,14 @@
 
         h1 {
             color: #444444;
-            font-size: 1rem;
-            line-height: 1rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            font-weight: 500;
         }
 
         p {
             color: #ededed;
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
     }
 }

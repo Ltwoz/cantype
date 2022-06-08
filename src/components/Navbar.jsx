@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaInfo, FaKeyboard, FaCog, FaPalette } from "react-icons/fa";
+import { resetTest } from "../helpers/resetTest";
 
 function Navbar() {
+
+    const handleChangeRoute = () => {
+        resetTest();
+    }
+
     return (
         <div className="top">
             {/* Logo */}
@@ -13,7 +19,7 @@ function Navbar() {
                 <Link to="/" className="button">
                     <FaKeyboard />
                 </Link>
-                <Link to="/About" className="button">
+                <Link to="/About" className="button" onClick={handleChangeRoute}>
                     <FaInfo />
                 </Link>
                 <div className="button">

@@ -66,9 +66,7 @@ function Home() {
 	}, [dispatch, timer, timerId]);
 
     return (
-        <div className="middle">
-            <Test />
-        </div>
+        <Test />
     );
 }
 

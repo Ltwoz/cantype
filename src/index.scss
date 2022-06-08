@@ -1,9 +1,10 @@
 @use "./styles/variables" as v;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;1,200;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
 @import "./styles/Navbar.scss";
 @import "./styles/Test.scss";
 @import "./styles/Footer.scss";
+@import "./styles/About.scss";
 
 * {
     margin: 0;
@@ -17,7 +18,7 @@
 
 /* App */
 body {
-    font-family: 'Roboto-mono', monospace;
+    font-family: v.$font;
     // background: #3c4756;
     // color: #f44c7f;
     background: #171717;

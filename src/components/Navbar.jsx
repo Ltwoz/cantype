@@ -16,12 +16,12 @@ function Navbar() {
                 <Link to="/About" className="button">
                     <FaInfo />
                 </Link>
-                <Link to="/Theme" className="button">
+                <div className="button">
                     <FaPalette />
-                </Link>
-                <Link to="/Setting" className="button">
+                </div>
+                <div className="button">
                     <FaCog  />
-                </Link>
+                </div>
             </div>
         </div>
     );

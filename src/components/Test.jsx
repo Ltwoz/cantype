@@ -46,7 +46,7 @@ function Test() {
                                         id="caret"
                                         className="blink"
                                         style={{
-                                            left: typedWord.length * 13.5,
+                                            left: typedWord.length * 14.6,
                                         }}
                                     >
                                         |

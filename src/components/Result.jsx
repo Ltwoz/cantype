@@ -19,7 +19,7 @@ function Result() {
 
     return (
         <div className="result">
-            {wpm}
+            {Math.round(wpm)}
         </div>
     );
 }

@@ -1,2 +1,2 @@
-## cantype 
-Typing Test.
+cantype
+a typing test website.

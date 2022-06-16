@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function Result() {
@@ -15,7 +16,8 @@ function Result() {
             correctChars += wordList[idx].length;
         }
     });
-    const wpm = ((correctChars + spaces) * 60) / 30 / 5;
+
+    const wpm = ((correctChars + spaces) * (60 / 30)) / 5;
 
     return (
         <div className="result">

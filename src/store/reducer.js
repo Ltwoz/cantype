@@ -10,7 +10,8 @@ import {
     SET_WORDLIST,
     SET_REF,
     SET_CARET_REF,
-    SET_THEME
+    SET_THEME,
+    SET_TIME
 } from "./actions";
 
 export const initialState = {
@@ -27,7 +28,8 @@ export const initialState = {
         caretRef: null,
     },
     preference: {
-        theme: ""
+        theme: "",
+        timeLimit: 30,
     }
 };
 
@@ -112,6 +114,11 @@ const preferenceReducer = (state = initialState.preference, {type, payload}) => 
     switch (type) {
         case SET_THEME:
             return {...state, theme: payload};
+        case SET_TIME:
+            return {
+                ...state,
+                timeLimit: payload,
+            };
         default:
             return state;
     }

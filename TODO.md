@@ -58,3 +58,5 @@ acc: total number of characters (including spaces) of words you got right divide
 3. Setting
 4. Result
 5. themes { WPM : 10 , ACC : 100% , }
+
+วันละนิด

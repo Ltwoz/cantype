@@ -42,6 +42,7 @@ export const recordTest = (key, ctrlKey) => {
     const {
         time: { timer, timerId },
         word: { typedWord, currWord, activeWordRef, caretRef },
+        preferences: { timeLimit }
     } = getState();
 
     if (timer === 0) {
@@ -62,7 +63,7 @@ export const recordTest = (key, ctrlKey) => {
 
     switch (key) {
         case "Tab":
-            if (timer !== 60 || timerId) {
+            if (timer !== timeLimit || timerId) {
                 resetTest();
                 document.getElementsByClassName("word")[0].scrollIntoView();
             }

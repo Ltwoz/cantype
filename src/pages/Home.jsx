@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Header from "../components/Header";
 import Test from "../components/Test";
 import { useDispatch, useSelector} from "react-redux";
 import { setWordList } from "../store/actions"

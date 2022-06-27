@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Theme from "./components/Theme";
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <div className="container">
                 <BrowserRouter>
                     <Navbar />
+                    <Theme />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />

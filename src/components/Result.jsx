@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-
+import { FaRedoAlt } from "react-icons/fa"
+ 
 function Result() {
     const {
         word: { wordList, typedHistory, currWord },
@@ -21,7 +22,31 @@ function Result() {
 
     return (
         <div className="result">
-            {Math.round(wpm)} wpm
+            {/* {Math.round(wpm)} wpm */}
+            
+            <div className="stats">
+                <div className="wpm">
+                    <div className="img"></div>
+                    <p>44 wpm</p>
+                </div>
+                <div className="acc">
+                    <div className="img"></div>
+                    <p>91%</p>
+                </div>
+                <div className="correct">
+                    <div className="img"></div>
+                    <p>16</p>
+                </div>
+                <div className="incorrect">
+                    <div className="img"></div>
+                    <p>6</p>
+                </div>
+            </div>
+            <div className="bottom">
+                <div className="button">
+                    <FaRedoAlt />
+                </div>
+            </div>
         </div>
     );
 }

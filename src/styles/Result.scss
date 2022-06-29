@@ -1,0 +1,40 @@
+.result {
+    display: flex;
+    flex-direction: column;
+
+    .stats {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 50px 0;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            .img {
+                width: 180px;
+                height: 180px;
+                background-color: salmon;
+            }
+
+            p {
+                font-size: 2rem;
+                line-height: 60px;
+                border-top: 2px solid #fff;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: center;
+        margin: 25px 0;
+
+        .button {
+            font-size: 35px;
+        }
+    }
+}

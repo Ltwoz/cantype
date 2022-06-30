@@ -33,8 +33,19 @@
         justify-content: center;
         margin: 25px 0;
 
-        .button {
-            font-size: 35px;
+        .reset-button {
+            font-size: 32px;
+            cursor: pointer;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            transition: .125s;
+            box-sizing: content-box;
+            height: 36px;
+
+            &:hover {
+                background: #ededed;
+                color: #171717;
+            }
         }
     }
 }

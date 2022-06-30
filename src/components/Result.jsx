@@ -4,21 +4,21 @@ import { useSelector } from "react-redux";
 import { FaRedoAlt } from "react-icons/fa"
  
 function Result() {
-    const {
-        word: { wordList, typedHistory, currWord },
-    } = useSelector((state) => state);
-    const spaces = wordList.indexOf(currWord);
-    let correctChars = 0;
-    const result = typedHistory.map((typedWord, idx) => {
-        typedWord === wordList[idx];
-    });
-    result.forEach((r, idx) => {
-        if (r) {
-            correctChars += wordList[idx].length;
-        }
-    });
+    // const {
+    //     word: { wordList, typedHistory, currWord },
+    // } = useSelector((state) => state);
+    // const spaces = wordList.indexOf(currWord);
+    // let correctChars = 0;
+    // const result = typedHistory.map((typedWord, idx) => {
+    //     typedWord === wordList[idx];
+    // });
+    // result.forEach((r, idx) => {
+    //     if (r) {
+    //         correctChars += wordList[idx].length;
+    //     }
+    // });
 
-    const wpm = ((correctChars + spaces) * (60 / 30)) / 5;
+    // const wpm = ((correctChars + spaces) * (60 / 30)) / 5;
 
     return (
         <div className="result">
@@ -43,7 +43,7 @@ function Result() {
                 </div>
             </div>
             <div className="bottom">
-                <div className="button">
+                <div className="reset-button">
                     <FaRedoAlt />
                 </div>
             </div>

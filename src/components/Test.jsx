@@ -89,7 +89,7 @@ function Test() {
                     })}
                 </div>
             </div>
-            <ResetButton />
+            <ResetButton size="24" />
         </div>
     );
 }

@@ -42,7 +42,7 @@ function Result() {
                     <p>6</p>
                 </div>
             </div>
-            <ResetButton />
+            <ResetButton size="35" />
         </div>
     );
 }

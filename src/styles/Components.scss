@@ -1,0 +1,21 @@
+// Reset Button
+.bottom {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+
+    .reset-button {
+        font-size: 32px;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        transition: .125s;
+        box-sizing: content-box;
+        height: 36px;
+        color: #444444;
+    
+        &:hover{
+            color: #ededed;
+        }
+    }
+}

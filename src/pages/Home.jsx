@@ -67,8 +67,8 @@ function Home() {
 
     return (
         <>
-            {/* {timer !== 0 ? <Test /> : <Result />} */}
-            <Result />
+            {timer !== 0 ? <Test /> : <Result />}
+            {/* <Result /> */}
         </>
     );
 }

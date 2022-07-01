@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { FaRedoAlt } from "react-icons/fa"
- 
+import { ResetButton } from "./ResetButton";
+
 function Result() {
     // const {
     //     word: { wordList, typedHistory, currWord },
@@ -23,7 +23,7 @@ function Result() {
     return (
         <div className="result">
             {/* {Math.round(wpm)} wpm */}
-            
+
             <div className="stats">
                 <div className="wpm">
                     <div className="img"></div>
@@ -42,11 +42,7 @@ function Result() {
                     <p>6</p>
                 </div>
             </div>
-            <div className="bottom">
-                <div className="reset-button">
-                    <FaRedoAlt />
-                </div>
-            </div>
+            <ResetButton />
         </div>
     );
 }

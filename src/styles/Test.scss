@@ -24,6 +24,7 @@
         height: 156px;
         padding-bottom: 1em;
         color: #444444;
+
         
     
         .word {
@@ -31,6 +32,9 @@
             margin: 0 0.37rem 0.74rem;
             font-size: 1.5rem;
             line-height: 1.5rem;
+
+            transition: all 0.25s ease 0s;
+            animation: fade-in .5s;
     
             &.wrong {
                 color: #DA0037;

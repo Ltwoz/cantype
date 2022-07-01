@@ -8,6 +8,7 @@
 @import "./styles/About.scss";
 @import "./styles/ThemePallet.scss";
 @import "./styles//Result.scss";
+@import "./styles/Components.scss";
 
 * {
     margin: 0;
@@ -30,6 +31,7 @@ body {
     // color: #f44c7f;
     background: #171717;
     color: #ededed;
+    user-select: none;
 }
 
 .App {
@@ -46,4 +48,16 @@ body {
     max-width: 1000px;
     min-height: 100vh;
     padding: 2rem;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    45% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

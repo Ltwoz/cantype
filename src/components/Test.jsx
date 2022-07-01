@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setRef, setCaretRef } from "../store/actions";
+import { ResetButton } from "./ResetButton";
 
 function Test() {
     const {
@@ -88,6 +89,7 @@ function Test() {
                     })}
                 </div>
             </div>
+            <ResetButton />
         </div>
     );
 }

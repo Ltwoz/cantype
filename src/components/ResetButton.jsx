@@ -9,7 +9,8 @@ export function ResetButton(props) {
     };
 
     return (
-        <div className="bottom">
+        <div className="bottom
+        ">
             <div className="reset-button" onClick={reset}>
                 <FaRedoAlt size={props.size} />
             </div>

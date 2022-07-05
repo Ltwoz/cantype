@@ -45,7 +45,7 @@ function Result() {
         }
     }
     const wpm = Math.round(((correctChars + spaces) * 60) / 30 / 5);
-    const acc = Math.round(((correctChars + spaces) / totalChars) * 100);
+    const acc = Math.round((correctChars / totalChars) * 100);
 
     return (
         <div className="result">

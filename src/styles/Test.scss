@@ -34,21 +34,22 @@
                 margin: 0 0.37rem 0.74rem;
                 font-size: 1.5rem;
                 line-height: 1.5rem;
+                border-bottom: 2px solid transparent;
     
                 transition: all 0.25s ease 0s;
                 animation: fade-in .4s;
         
                 &.wrong {
-                    color: #DA0037;
-                    border-bottom: 2px solid;
+                    // color: #444444;
+                    border-bottom: 2px solid #DA0037;
                 }
             }
             
-            .right {
+            span.right {
                 color: #ededed;
             }
         
-            .wrong {
+            span.wrong {
                 color: #DA0037;
             }
         

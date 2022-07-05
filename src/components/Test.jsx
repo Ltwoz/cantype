@@ -15,8 +15,6 @@ function Test() {
     const activeWord = useRef(null);
     const caretRef = useRef(null);
 
-    const nomore = 8;
-
     useEffect(() => {
         dispatch(setRef(activeWord));
         dispatch(setCaretRef(caretRef));

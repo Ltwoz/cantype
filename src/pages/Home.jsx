@@ -30,7 +30,6 @@ function Home() {
             ) {
                 recordTest(e.key, e.ctrlKey);
                 e.preventDefault();
-                console.log(e.key)
             }
         };
         return () => {

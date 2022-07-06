@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
 import Test from "../components/Test";
-import { useDispatch, useSelector} from "react-redux";
-import { setWordList } from "../store/actions"
+import { useDispatch, useSelector } from "react-redux";
+import { setWordList } from "../store/actions";
 import { recordTest } from "../helpers/recordTest";
-import { setTimerId } from "../store/actions"
+import { setTimerId } from "../store/actions";
 import Result from "../components/Result";
 
 function Home() {
     const {
-		time: { timerId, timer },
-		word: { currWord, typedWord, activeWordRef },
-	} = useSelector((state) => state);
-    const dispatch = useDispatch()
+        time: { timerId, timer },
+        word: { currWord, typedWord, activeWordRef },
+    } = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     // add wordList
     useEffect(() => {
         import(`../wordlist/words.json`).then((words) => {
-            dispatch(setWordList(words.default))
+            dispatch(setWordList(words.default));
         });
-    }, [dispatch])
+    }, [dispatch]);
 
     // keydown event
     useEffect(() => {
         document.onkeydown = (e) => {
-            if (
+            if (e.repeat) e.preventDefault();
+            else if (
                 e.key.length === 1 ||
                 e.key === "Backspace" ||
                 e.key === "Tab"
@@ -35,7 +36,7 @@ function Home() {
         return () => {
             document.onkeydown = null;
         };
-    }, [dispatch])
+    }, [dispatch]);
 
     //check correct
     useEffect(() => {
@@ -44,25 +45,25 @@ function Home() {
         if (currWordEl) {
             currWordEl.children[idx + 1].classList.add(
                 currWord[idx] !== typedWord[idx] ? "wrong" : "right"
-            )
+            );
         }
-    }, [currWord, typedWord, activeWordRef])
+    }, [currWord, typedWord, activeWordRef]);
 
     //remove correct
     useEffect(() => {
-		let idx = typedWord.length;
-		const currWordEl = activeWordRef?.current;
-		if (currWordEl && idx < currWord.length)
-			currWordEl.children[idx + 1].classList.remove("wrong", "right");
-	}, [currWord.length, typedWord, activeWordRef]);
+        let idx = typedWord.length;
+        const currWordEl = activeWordRef?.current;
+        if (currWordEl && idx < currWord.length)
+            currWordEl.children[idx + 1].classList.remove("wrong", "right");
+    }, [currWord.length, typedWord, activeWordRef]);
 
     //timer
     useEffect(() => {
-		if (timer === 0 && timerId) {
-			clearInterval(timerId);
-			dispatch(setTimerId(null));
-		}
-	}, [dispatch, timer, timerId]);
+        if (timer === 0 && timerId) {
+            clearInterval(timerId);
+            dispatch(setTimerId(null));
+        }
+    }, [dispatch, timer, timerId]);
 
     return (
         <>

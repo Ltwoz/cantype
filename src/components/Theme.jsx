@@ -103,7 +103,7 @@ export function showTheme() {
 function Theme() {
     return (
         <div className="theme-center">
-            <div className="theme-area">{showTheme()}</div>
+            <div className="theme-area"></div>
         </div>
     );
 }

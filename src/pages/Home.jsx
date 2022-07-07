@@ -5,6 +5,7 @@ import { setWordList } from "../store/actions";
 import { recordTest } from "../helpers/recordTest";
 import { setTimerId } from "../store/actions";
 import Result from "../components/Result";
+import CommandLine from "../components/CommandLine";
 
 function Home() {
     const {
@@ -24,13 +25,21 @@ function Home() {
     useEffect(() => {
         document.onkeydown = (e) => {
             if (e.repeat) e.preventDefault();
+            else if (e.key === "Escape") {
+                document.getElementById("commandLineWrapper").classList.toggle('hidden');
+                e.preventDefault();
+            }
             else if (
                 e.key.length === 1 ||
                 e.key === "Backspace" ||
                 e.key === "Tab"
             ) {
-                recordTest(e.key, e.ctrlKey);
-                e.preventDefault();
+                if (document.getElementById("commandLineWrapper").classList.contains('hidden')) {
+                    recordTest(e.key, e.ctrlKey);
+                    e.preventDefault()
+                } else {
+                    e.preventDefault();
+                }
             }
         };
         return () => {
@@ -69,6 +78,7 @@ function Home() {
         <>
             {timer !== 0 ? <Test /> : <Result />}
             {/* <Result /> */}
+            <CommandLine />
         </>
     );
 }

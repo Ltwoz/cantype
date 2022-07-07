@@ -9,6 +9,7 @@
 @import "./styles/ThemePallet.scss";
 @import "./styles//Result.scss";
 @import "./styles/Components.module.scss";
+@import "./styles/CommandLine.scss";
 
 * {
     margin: 0;
@@ -21,7 +22,7 @@ html {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* App */
@@ -44,7 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     max-width: 1000px;
     min-height: 100vh;

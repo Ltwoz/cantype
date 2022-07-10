@@ -6,6 +6,7 @@ import { recordTest } from "../helpers/recordTest";
 import { setTimerId } from "../store/actions";
 import Result from "../components/Result";
 import CommandLine from "../components/CommandLine";
+import { useState } from "react";
 
 function Home() {
     const {
@@ -13,6 +14,7 @@ function Home() {
         word: { currWord, typedWord, activeWordRef },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
+    const [showCmd, setShowCmd] = useState(false);
 
     // add wordList
     useEffect(() => {
@@ -24,24 +26,51 @@ function Home() {
     // keydown event
     useEffect(() => {
         document.onkeydown = (e) => {
-            if (e.repeat) e.preventDefault();
+            console.log(e.key);
+            if (e.key === "Tab" && e.repeat) e.preventDefault();
             else if (e.key === "Escape") {
-                document.getElementById("commandLineWrapper").classList.toggle('hidden');
+                // document.getElementById("commandLineWrapper").classList.toggle('hidden');
+                setShowCmd((s) => !s);
                 e.preventDefault();
-            }
-            else if (
+            } else if (
                 e.key.length === 1 ||
                 e.key === "Backspace" ||
                 e.key === "Tab"
             ) {
-                if (document.getElementById("commandLineWrapper").classList.contains('hidden')) {
-                    recordTest(e.key, e.ctrlKey);
-                    e.preventDefault()
-                } else {
-                    e.preventDefault();
-                }
+                recordTest(e.key, e.ctrlKey);
+                e.preventDefault()
             }
-        };
+            }
+        // document.onkeydown = (e) => {
+        //     console.log(e.key);
+        //     if (e.key === "Escape") {
+        //         document.getElementById("commandLineWrapper").classList.toggle('hidden');
+        //         e.preventDefault();
+        //     }
+        //     else if (document.getElementById("commandLineWrapper").classList.contains('hidden')) {
+        //         if (e.repeat) e.preventDefault();
+        //         else if (
+        //             e.key.length === 1 ||
+        //             e.key === "Backspace" ||
+        //             e.key === "Tab"
+        //         ) {
+        //             recordTest(e.key, e.ctrlKey);
+        //             e.preventDefault()
+        //         }
+        //     }
+        //     else if (
+        //         e.key.length === 1 ||
+        //         e.key === "Backspace" ||
+        //         e.key === "Tab"
+        //     ) {
+        //         if (document.getElementById("commandLineWrapper").classList.contains('hidden')) {
+        //             recordTest(e.key, e.ctrlKey);
+        //             e.preventDefault()
+        //         } else {
+        //             e.preventDefault();
+        //         }
+        //     }
+        // };
         return () => {
             document.onkeydown = null;
         };
@@ -78,7 +107,7 @@ function Home() {
         <>
             {timer !== 0 ? <Test /> : <Result />}
             {/* <Result /> */}
-            <CommandLine />
+            {showCmd && <CommandLine setShowCmd={setShowCmd}/>}
         </>
     );
 }

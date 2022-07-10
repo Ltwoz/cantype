@@ -1,24 +1,106 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { currentCommands } from "../helpers/commandline-lists";
+import { FaSearch } from "react-icons/fa"
 
-function CommandLine() {
+function CommandLine(props) {
     // function updateSuggestedCommands() {
     //     for (let idx = 0; idx < defalutCommands.list ) {}
     // }
 
+    const [inputVal, setInputVal] = useState("");
+
+    // useEffect(() => {
+    //     inputVal.toLowerCase().split(" ");
+    //     if (inputVal[0] === " ") {
+    //         console.log("input");
+    //         console.log(inputVal);
+    //     }
+    // }, [inputVal])
+
+    const filteredSearch = currentCommands.list.filter((val) => {
+        if (inputVal === "") {
+            return val;
+        } else if (val.display.toLowerCase().includes(inputVal.toLowerCase())) {
+            return val;
+        }
+    });
+
+    const handlePalletKeys = (e) => {
+        if (e.key === "Tab") {
+            e.preventDefault();
+        }
+        if (e.key === "Escape") {
+            props.setShowCmd(false);
+            e.preventDefault();
+        }
+        e.stopPropagation();
+    };
+
+    const handleCommandSelected = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            let command = document
+                .querySelector(".cmdlist")
+                .getAttribute("command");
+            let subgroup = false;
+            currentCommands.list.forEach((obj) => {
+                if (obj.id === command) {
+                    obj.exec();
+                    console.log(obj.display);
+                }
+            });
+            if (!subgroup) console.log("hide");
+            return;
+        }
+        if (e.key === "ArrowDown") {
+            console.log("key arrow down");
+        }
+    };
+
+    // const updateSuggestedCommands = () => {
+    //     inputVal.toLowerCase().split(" ");
+    //     if (inputVal[0] === "") {
+    //         currentCommands.list.forEach((obj, idx) => {
+    //             let foundcount = 0;
+
+    //         })
+    //     }
+    // }
+
     return (
-        <div id="commandLineWrapper" className="hidden">
-            <div id="commandLine">
-                <div>
-                    <input className="input" placeholder="Type to search" />
+        <div className="commandLineWrapper" onKeyDown={handlePalletKeys}>
+            <div className="commandLine">
+                <div className="input-box">
+                    <div className="search-icon">
+                        <FaSearch />
+                    </div>
+                    <input
+                        className="input"
+                        placeholder="Type to search"
+                        type="text"
+                        // onBlur={({target}) => {target.focus()}}
+                        autoFocus
+                        maxLength={32}
+                        onChange={(e) => {
+                            setInputVal(e.target.value);
+                        }}
+                        value={inputVal}
+                        onKeyDown={(e) => {
+                            handleCommandSelected(e);
+                        }}
+                    />
                 </div>
-                <div className="suggestions">
-                    {currentCommands.list.map((obj, idx) => (
-                        <div className="cmdlist" command={obj.id} key={idx}>
-                            {obj.display}
-                        </div>
-                    ))}
-                </div>
+                {filteredSearch.length > 0 && (
+                    <div className="suggestions">
+                        {filteredSearch.map((obj, idx) => (
+                            <div className="cmdlist" command={obj.id} key={idx}>
+                                {obj.display}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

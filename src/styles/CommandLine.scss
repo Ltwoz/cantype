@@ -1,4 +1,4 @@
-#commandLineWrapper {
+.commandLineWrapper {
     background: rgba(0, 0, 0, .75);
     height: 100%;
     width: 100%;
@@ -6,41 +6,57 @@
     z-index: 999;
     top: 0;
     left: 0;
-    padding: 5rem 0;
+    padding: 15rem 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     animation: fade-in .4s;
 
-    #commandLine {
+    .commandLine {
         background-color: #141414;
         border-radius: 0.5rem;
-        width: 700px;
+        width: 600px;
+        height: fit-content;
 
-        .input {
-            border: none;
-            border-radius: 0.5rem;
-            color: #444444;
-            background: #141414;
-            font-size: 1rem;
-            outline: none;
-            padding: 1rem 1rem 1rem 0;
-            width: 100%;
+        .input-box {
+            display: flex;
+            align-items: center;
+
+            .search-icon {
+                margin: 1.5px 1rem 0;
+            }
+
+            .input {
+                border: none;
+                border-radius: 0.5rem;
+                color: #ededed;
+                background: #141414;
+                font-size: 1rem;
+                outline: none;
+                padding: 1rem 1rem 1rem 0;
+                width: 100%;
+            }
         }
 
         .suggestions {
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            overflow: scroll;
-            max-height: calc(100vh - 13rem);
+            overflow-y: scroll;
+            max-height: calc(100vh - 33.2rem);
 
             .cmdlist {
                 color: #ededed;
                 display: flex;
-                font-size: .75rem;
-                line-height: .75rem;
+                font-size: 1rem;
+                line-height: 1rem;
                 padding: 0.5rem 1rem;
+
+                &.activeMouse {
+                    background: #ededed;
+                    color: #141414;
+                    cursor: pointer;
+                }
             }
         }
     }

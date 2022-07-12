@@ -1,8 +1,6 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { currentCommands } from "../helpers/commandline-lists";
-import { FaSearch } from "react-icons/fa"
+import { FaSearch } from "react-icons/fa";
 
 function CommandLine(props) {
     // function updateSuggestedCommands() {
@@ -10,6 +8,7 @@ function CommandLine(props) {
     // }
 
     const [inputVal, setInputVal] = useState("");
+    const commandInput = useRef(null);
 
     // useEffect(() => {
     //     inputVal.toLowerCase().split(" ");
@@ -35,6 +34,25 @@ function CommandLine(props) {
             props.setShowCmd(false);
             e.preventDefault();
         }
+        if (e.key === "Enter") {
+            e.preventDefault();
+            let command = document
+                .querySelector(".cmdlist")
+                .getAttribute("command");
+            let subgroup = false;
+            currentCommands.list.forEach((obj) => {
+                if (obj.id === command) {
+                    obj.exec();
+                    console.log(obj.display);
+                }
+            });
+            if (!subgroup) console.log("hide");
+            return;
+        }
+        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+            console.log(e.key);
+            e.preventDefault();
+        }
         e.stopPropagation();
     };
 
@@ -54,8 +72,8 @@ function CommandLine(props) {
             if (!subgroup) console.log("hide");
             return;
         }
-        if (e.key === "ArrowDown") {
-            console.log("key arrow down");
+        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+            e.preventDefault();
         }
     };
 
@@ -80,6 +98,7 @@ function CommandLine(props) {
                         className="input"
                         placeholder="Type to search"
                         type="text"
+                        ref={commandInput}
                         // onBlur={({target}) => {target.focus()}}
                         autoFocus
                         maxLength={32}
@@ -87,9 +106,9 @@ function CommandLine(props) {
                             setInputVal(e.target.value);
                         }}
                         value={inputVal}
-                        onKeyDown={(e) => {
-                            handleCommandSelected(e);
-                        }}
+                        // onKeyDown={(e) => {
+                        //     handleCommandSelected(e);
+                        // }}
                     />
                 </div>
                 {filteredSearch.length > 0 && (

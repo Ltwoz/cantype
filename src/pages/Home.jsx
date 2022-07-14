@@ -26,7 +26,6 @@ function Home() {
     // keydown event
     useEffect(() => {
         document.onkeydown = (e) => {
-            console.log(e.key);
             if (e.key === "Tab" && e.repeat) e.preventDefault();
             else if (e.key === "Escape") {
                 // document.getElementById("commandLineWrapper").classList.toggle('hidden');
@@ -38,39 +37,9 @@ function Home() {
                 e.key === "Tab"
             ) {
                 recordTest(e.key, e.ctrlKey);
-                e.preventDefault()
+                e.preventDefault();
             }
-            }
-        // document.onkeydown = (e) => {
-        //     console.log(e.key);
-        //     if (e.key === "Escape") {
-        //         document.getElementById("commandLineWrapper").classList.toggle('hidden');
-        //         e.preventDefault();
-        //     }
-        //     else if (document.getElementById("commandLineWrapper").classList.contains('hidden')) {
-        //         if (e.repeat) e.preventDefault();
-        //         else if (
-        //             e.key.length === 1 ||
-        //             e.key === "Backspace" ||
-        //             e.key === "Tab"
-        //         ) {
-        //             recordTest(e.key, e.ctrlKey);
-        //             e.preventDefault()
-        //         }
-        //     }
-        //     else if (
-        //         e.key.length === 1 ||
-        //         e.key === "Backspace" ||
-        //         e.key === "Tab"
-        //     ) {
-        //         if (document.getElementById("commandLineWrapper").classList.contains('hidden')) {
-        //             recordTest(e.key, e.ctrlKey);
-        //             e.preventDefault()
-        //         } else {
-        //             e.preventDefault();
-        //         }
-        //     }
-        // };
+        };
         return () => {
             document.onkeydown = null;
         };
@@ -107,7 +76,7 @@ function Home() {
         <>
             {timer !== 0 ? <Test /> : <Result />}
             {/* <Result /> */}
-            {showCmd && <CommandLine setShowCmd={setShowCmd}/>}
+            {showCmd && <CommandLine setShowCmd={setShowCmd} />}
         </>
     );
 }

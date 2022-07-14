@@ -56,27 +56,6 @@ function CommandLine(props) {
         e.stopPropagation();
     };
 
-    const handleCommandSelected = (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            let command = document
-                .querySelector(".cmdlist")
-                .getAttribute("command");
-            let subgroup = false;
-            currentCommands.list.forEach((obj) => {
-                if (obj.id === command) {
-                    obj.exec();
-                    console.log(obj.display);
-                }
-            });
-            if (!subgroup) console.log("hide");
-            return;
-        }
-        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-            e.preventDefault();
-        }
-    };
-
     // const updateSuggestedCommands = () => {
     //     inputVal.toLowerCase().split(" ");
     //     if (inputVal[0] === "") {

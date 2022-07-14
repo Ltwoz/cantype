@@ -25,7 +25,7 @@ function Home() {
 
     // keydown event
     useEffect(() => {
-        document.onkeydown = (e) => {   
+        document.onkeydown = (e) => {
             if (e.key === "Tab" && e.repeat) e.preventDefault();
             else if (e.key === "Escape") {
                 // document.getElementById("commandLineWrapper").classList.toggle('hidden');

@@ -9,6 +9,7 @@ function CommandLine(props) {
 
     const [inputVal, setInputVal] = useState("");
     const commandInput = useRef(null);
+    const cmdItem = useRef(null);
 
     // useEffect(() => {
     //     inputVal.toLowerCase().split(" ");
@@ -50,8 +51,25 @@ function CommandLine(props) {
             return;
         }
         if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-            console.log(e.key);
             e.preventDefault();
+            let activenum = -1;
+            let hoverId = "";
+            
+            if (e.key === "ArrowUp") {
+                if(activenum === 0) {
+                    filteredSearch[filteredSearch.length - 1]
+                    console.log("up up");
+                } else {
+                    filteredSearch[--activenum]
+                    console.log("up but else");
+                }
+            }
+
+            if (e.key === "ArrowDown") {
+                if(activenum + 1 == filteredSearch.length) {
+                    console.log("down down");
+                }
+            }
         }
         e.stopPropagation();
     };
@@ -93,7 +111,7 @@ function CommandLine(props) {
                 {filteredSearch.length > 0 && (
                     <div className="suggestions">
                         {filteredSearch.map((obj, idx) => (
-                            <div className="cmdlist" command={obj.id} key={idx}>
+                            <div className="cmdlist" ref={cmdItem} command={obj.id} key={idx}>
                                 {obj.display}
                             </div>
                         ))}

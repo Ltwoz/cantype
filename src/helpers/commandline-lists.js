@@ -17,6 +17,54 @@ export const defalutCommands = {
                 currentCommands = commandsTypeConfig;
             }
         },
+        {
+            id: "changeModeConfig",
+            display: "Mode...",
+            subgroup: true,
+            exec: () => {
+                currentCommands = commandsModeConfig;
+            }
+        },
+        {
+            id: "changeThemeConfig",
+            display: "Theme...",
+            subgroup: true,
+            exec: () => {
+                currentCommands = commandsThemeConfig;
+            }
+        },
+        {
+            id: "changeTimeConfig",
+            display: "Time...",
+            subgroup: true,
+            exec: () => {
+                currentCommands = commandsTimeConfig;
+            }
+        },
+        {
+            id: "changeTypeConfig",
+            display: "Type...",
+            subgroup: true,
+            exec: () => {
+                currentCommands = commandsTypeConfig;
+            }
+        },
+        {
+            id: "changeModeConfig",
+            display: "Mode...",
+            subgroup: true,
+            exec: () => {
+                currentCommands = commandsModeConfig;
+            }
+        },
+        {
+            id: "changeThemeConfig",
+            display: "Theme...",
+            subgroup: true,
+            exec: () => {
+                currentCommands = commandsThemeConfig;
+            }
+        },
     ]
 }
 

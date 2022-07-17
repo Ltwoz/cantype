@@ -50,8 +50,46 @@ function CommandLine(props) {
             return;
         }
         if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-            console.log(e.key);
             e.preventDefault();
+            const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
+            let activenum = -1;
+            let hoverId = "";
+
+            cmdLists.forEach((obj, idx) => {
+                if (obj.classList.contains("activeCmd")) {
+                    activenum = idx;
+                }
+            });
+
+            if (e.key === "ArrowUp") {
+                cmdLists.forEach((obj, idx) => {
+                    obj.classList.remove("activeCmd");
+                })
+                if (activenum === 0) {
+                    cmdLists[cmdLists.length - 1].classList.add("activeCmd");
+                } else {
+                    cmdLists[--activenum].classList.add("activeCmd");
+                }
+            }
+
+            if (e.key === "ArrowDown") {
+                cmdLists.forEach((obj, idx) => {
+                    obj.classList.remove("activeCmd");
+                })
+                if (activenum + 1 == cmdLists.length) {
+                    cmdLists[0].classList.add("activeCmd");
+                } else {
+                    cmdLists[++activenum].classList.add("activeCmd");
+                }
+            }
+
+            try {
+                const scroll =Math.abs()
+            } catch(e) {
+                if (e instanceof Error) {
+                    console.log("could not scroll suggestions :", e.message);
+                }
+            }
         }
         e.stopPropagation();
     };
@@ -93,7 +131,11 @@ function CommandLine(props) {
                 {filteredSearch.length > 0 && (
                     <div className="suggestions">
                         {filteredSearch.map((obj, idx) => (
-                            <div className="cmdlist" command={obj.id} key={idx}>
+                            <div
+                                className="cmdlist"
+                                command={obj.id}
+                                key={idx}
+                            >
                                 {obj.display}
                             </div>
                         ))}

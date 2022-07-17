@@ -1,73 +1,3 @@
-export const defalutCommands = {
-    title: "",
-    list: [
-        {
-            id: "changeTimeConfig",
-            display: "Time...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsTimeConfig;
-            }
-        },
-        {
-            id: "changeTypeConfig",
-            display: "Type...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsTypeConfig;
-            }
-        },
-        {
-            id: "changeModeConfig",
-            display: "Mode...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsModeConfig;
-            }
-        },
-        {
-            id: "changeThemeConfig",
-            display: "Theme...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsThemeConfig;
-            }
-        },
-        {
-            id: "changeTimeConfig",
-            display: "Time...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsTimeConfig;
-            }
-        },
-        {
-            id: "changeTypeConfig",
-            display: "Type...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsTypeConfig;
-            }
-        },
-        {
-            id: "changeModeConfig",
-            display: "Mode...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsModeConfig;
-            }
-        },
-        {
-            id: "changeThemeConfig",
-            display: "Theme...",
-            subgroup: true,
-            exec: () => {
-                currentCommands = commandsThemeConfig;
-            }
-        },
-    ]
-}
-
 const commandsTimeConfig = {
     title: "Change time config...",
     list: [
@@ -101,6 +31,12 @@ const commandsTimeConfig = {
             configValue: 120,
             exec: () => {console.log("chang time 120");}
         },
+        {
+            id: "changeTimeConfigCustom",
+            display: "Custom",
+            input: true,
+            exec: () => {console.log("chang time 120");}
+        },
     ]
 }
 
@@ -128,4 +64,33 @@ const commandsTypeConfig = {
     ]
 }
 
+export const defalutCommands = {
+    title: "",
+    list: [
+        {
+            id: "changeTimeConfig",
+            display: "Time...",
+            subgroup: commandsTimeConfig,
+        },
+        {
+            id: "changeTypeConfig",
+            display: "Type...",
+            subgroup: commandsTypeConfig,
+        },
+        {
+            id: "changeModeConfig",
+            display: "Mode...",
+            subgroup: commandsTimeConfig,
+        },
+        {
+            id: "changeThemeConfig",
+            display: "Theme...",
+            subgroup: commandsTypeConfig,
+        },
+    ]
+}
+
 export let currentCommands = defalutCommands;
+export function setCurrentCommands(commands) {
+    currentCommands = commands;
+}

@@ -2,4 +2,4 @@
 a typing test website.
 
 ### stack used
-React.js and SASS
+React.js and SASS.

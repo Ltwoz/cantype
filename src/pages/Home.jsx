@@ -7,6 +7,7 @@ import { setTimerId } from "../store/actions";
 import Result from "../components/Result";
 import CommandLine from "../components/CommandLine";
 import { useState } from "react";
+import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
 
 function Home() {
     const {
@@ -30,6 +31,7 @@ function Home() {
             else if (e.key === "Escape") {
                 // document.getElementById("commandLineWrapper").classList.toggle('hidden');
                 setShowCmd((s) => !s);
+                setCurrentCommands(defalutCommands);
                 e.preventDefault();
             } else if (
                 e.key.length === 1 ||

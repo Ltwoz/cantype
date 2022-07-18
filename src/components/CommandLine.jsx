@@ -1,10 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
-import { currentCommands } from "../helpers/commandline-lists";
+import { currentCommands, setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
+import { useSelector, useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
+import { setIsCmdLine } from "../store/actions";
 
-function CommandLine(props) {
+function CommandLine() {
+    const {
+        toggle: { isCmdLine },
+    } = useSelector((state) => state);
+    const dispatch = useDispatch();
+
     const [inputVal, setInputVal] = useState("");
-    const [command, setCommand] = useState(currentCommands.list);
     const [subgroup, setSubgroup] = useState(false);
     const [isInput, setIsInput] = useState(false);
     const commandInput = useRef(null);
@@ -17,10 +23,6 @@ function CommandLine(props) {
         }
     });
 
-    useEffect(() => {
-        //pass
-    });
-
     const trigger = (command) => {
         currentCommands.list.forEach((obj, idx) => {
             if (obj.id == command) {
@@ -30,32 +32,30 @@ function CommandLine(props) {
                     console.log("this thing has to input");
                 } else if (obj.subgroup) {
                     setSubgroup(true);
-                    setCommand(obj.subgroup.list) 
-                    console.log(obj.subgroup.list);
-                    console.log("this thing has subgroup");
+                    // setCommand(obj.subgroup.list);
+                    setCurrentCommands(obj.subgroup);
                 } else {
                     if (obj.exec) {
                         obj.exec();
+                        dispatch(setIsCmdLine(false))
                     }
                 }
             }
         });
     }
 
-    const reRender = () => {
-        setCommand(
-            filteredSearch.map((obj, idx) => {
-                setCommand(...obj);
-            })
-        );
-    };
+    const restoreCommand = (sshow = true) => {
+        if (filteredSearch.length < 1) {
+            setCurrentCommands(defalutCommands);
+        }
+    }
 
     const handlePalletKeys = (e) => {
         if (e.key === "Tab") {
             e.preventDefault();
         }
-        if (e.key === "Escape") {
-            props.setShowCmd(false);
+        if (e.key === "Escape" && isCmdLine === true) {
+            dispatch(setIsCmdLine(false))
             e.preventDefault();
         }
         if (e.key === "Enter") {
@@ -64,13 +64,6 @@ function CommandLine(props) {
                 .querySelector(".cmdlist.activeCmd")
                 .getAttribute("command");
             trigger(command);
-            currentCommands.list.map((obj) => {
-                if (obj.id === command) {
-                    if (obj.exec) {
-                        obj.exec();
-                    }
-                }
-            });
             return;
         }
         if (e.key === "ArrowUp" || e.key === "ArrowDown") {

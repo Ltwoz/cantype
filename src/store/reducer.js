@@ -11,7 +11,8 @@ import {
     SET_REF,
     SET_CARET_REF,
     SET_THEME,
-    SET_TIME
+    SET_TIME,
+    SET_IS_CMDLINE
 } from "./actions";
 
 export const initialState = {
@@ -30,6 +31,9 @@ export const initialState = {
     preference: {
         theme: "",
         timeLimit: 30,
+    },
+    toggle: {
+        isCmdLine: false,
     }
 };
 
@@ -124,8 +128,18 @@ const preferenceReducer = (state = initialState.preference, {type, payload}) => 
     }
 }
 
+const toggleReducer = (state = initialState.toggle, {type, payload}) => {
+    switch (type) {
+        case SET_IS_CMDLINE:
+            return {...state, isCmdLine: payload}
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     time: timerReducer,
     word: wordReducer,
     preferences: preferenceReducer,
+    toggle: toggleReducer,
 });

@@ -19,6 +19,19 @@ function CommandLine() {
     const [isInput, setIsInput] = useState(false);
     const commandInput = useRef(null);
 
+    useEffect(() => {
+        const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
+        if (cmdLists.length > 0) {
+            const cmd = document.querySelector(".cmdlist.activeCmd");
+            if (cmd) {
+                cmdLists.forEach((obj, idx) => {
+                    obj.classList.remove("activeCmd");
+                });
+            }
+            cmdLists[0].classList.add("activeCmd");
+        }
+    })
+
     const filteredSearch = currentCommands.list.filter((val) => {
         if (inputVal === "") {
             return val;
@@ -44,6 +57,7 @@ function CommandLine() {
                         dispatch(setIsCmdLine(false));
                     }
                 }
+                setInputVal("");
             }
         });
     };

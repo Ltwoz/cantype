@@ -1,5 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
-import { currentCommands, setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
+import {
+    currentCommands,
+    setCurrentCommands,
+    defalutCommands,
+} from "../helpers/commandline-lists";
 import { useSelector, useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
 import { setIsCmdLine } from "../store/actions";
@@ -37,25 +41,28 @@ function CommandLine() {
                 } else {
                     if (obj.exec) {
                         obj.exec();
-                        dispatch(setIsCmdLine(false))
+                        dispatch(setIsCmdLine(false));
                     }
                 }
             }
         });
-    }
+    };
 
     const restoreCommand = (sshow = true) => {
         if (filteredSearch.length < 1) {
             setCurrentCommands(defalutCommands);
         }
-    }
+    };
 
     const handlePalletKeys = (e) => {
+        if (e.key) {
+            commandInput.current.focus();
+        }
         if (e.key === "Tab") {
             e.preventDefault();
         }
         if (e.key === "Escape" && isCmdLine === true) {
-            dispatch(setIsCmdLine(false))
+            dispatch(setIsCmdLine(false));
             e.preventDefault();
         }
         if (e.key === "Enter") {
@@ -66,11 +73,10 @@ function CommandLine() {
             trigger(command);
             return;
         }
-        if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+        if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "Tab") {
             e.preventDefault();
             const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
             let activenum = -1;
-            let hoverId = "";
 
             cmdLists.forEach((obj, idx) => {
                 if (obj.classList.contains("activeCmd")) {
@@ -78,7 +84,7 @@ function CommandLine() {
                 }
             });
 
-            if (e.key === "ArrowUp") {
+            if (e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey)) {
                 cmdLists.forEach((obj, idx) => {
                     obj.classList.remove("activeCmd");
                 });
@@ -89,7 +95,7 @@ function CommandLine() {
                 }
             }
 
-            if (e.key === "ArrowDown") {
+            if (e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey)) {
                 cmdLists.forEach((obj, idx) => {
                     obj.classList.remove("activeCmd");
                 });
@@ -99,20 +105,25 @@ function CommandLine() {
                     cmdLists[++activenum].classList.add("activeCmd");
                 }
             }
-
-            try {
-                const scroll = Math.abs();
-            } catch (e) {
-                if (e instanceof Error) {
-                    console.log("could not scroll suggestions :", e.message);
-                }
-            }
+            document
+                .querySelector(".cmdlist.activeCmd")
+                .scrollIntoView({ block: "nearest" });
         }
         e.stopPropagation();
     };
 
+    const handleClick = (e) => {
+        if (e.target.getAttribute("class") === "commandLineWrapper") {
+            dispatch(setIsCmdLine(false));
+        }
+    };
+
     return (
-        <div className="commandLineWrapper" onKeyDown={handlePalletKeys}>
+        <div
+            className="commandLineWrapper"
+            onKeyDown={handlePalletKeys}
+            onClick={handleClick}
+        >
             <div className="commandLine">
                 <div className="input-box">
                     <div className="search-icon">
@@ -130,9 +141,6 @@ function CommandLine() {
                             setInputVal(e.target.value);
                         }}
                         value={inputVal}
-                        // onKeyDown={(e) => {
-                        //     handleCommandSelected(e);
-                        // }}
                     />
                 </div>
                 {filteredSearch.length > 0 && (

@@ -27,8 +27,7 @@ function Home() {
         document.onkeydown = (e) => {
             if (e.key === "Tab" && e.repeat) e.preventDefault();
             else if (e.key === "Escape" && isCmdLine === false) {
-                // document.getElementById("commandLineWrapper").classList.toggle('hidden');
-                dispatch(setIsCmdLine(true))
+                dispatch(setIsCmdLine(true));
                 setCurrentCommands(defalutCommands);
                 e.preventDefault();
             } else if (

@@ -37,6 +37,7 @@ const commandsTimeConfig = {
             input: true,
             exec: () => {console.log("chang time 120");}
         },
+        
     ]
 }
 
@@ -76,11 +77,6 @@ export const defalutCommands = {
             id: "changeTypeConfig",
             display: "Type...",
             subgroup: commandsTypeConfig,
-        },
-        {
-            id: "changeModeConfig",
-            display: "Mode...",
-            subgroup: commandsTimeConfig,
         },
         {
             id: "changeThemeConfig",

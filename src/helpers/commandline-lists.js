@@ -31,13 +31,6 @@ const commandsTimeConfig = {
             configValue: 120,
             exec: () => {console.log("chang time 120");}
         },
-        {
-            id: "changeTimeConfigCustom",
-            display: "Custom",
-            input: true,
-            exec: () => {console.log("chang time 120");}
-        },
-        
     ]
 }
 

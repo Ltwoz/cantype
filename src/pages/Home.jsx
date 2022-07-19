@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Test from "../components/Test";
 import { useDispatch, useSelector } from "react-redux";
-import { setWordList } from "../store/actions";
+import { setIsCmdLine, setWordList, setTimerId } from "../store/actions";
 import { recordTest } from "../helpers/recordTest";
-import { setTimerId } from "../store/actions";
 import Result from "../components/Result";
 import CommandLine from "../components/CommandLine";
-import { useState } from "react";
+import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
 
 function Home() {
     const {
         time: { timerId, timer },
         word: { currWord, typedWord, activeWordRef },
+        toggle: { isCmdLine },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
-    const [showCmd, setShowCmd] = useState(false);
 
     // add wordList
     useEffect(() => {
@@ -27,9 +26,9 @@ function Home() {
     useEffect(() => {
         document.onkeydown = (e) => {
             if (e.key === "Tab" && e.repeat) e.preventDefault();
-            else if (e.key === "Escape") {
-                // document.getElementById("commandLineWrapper").classList.toggle('hidden');
-                setShowCmd((s) => !s);
+            else if (e.key === "Escape" && isCmdLine === false) {
+                dispatch(setIsCmdLine(true));
+                setCurrentCommands(defalutCommands);
                 e.preventDefault();
             } else if (
                 e.key.length === 1 ||
@@ -76,7 +75,7 @@ function Home() {
         <>
             {timer !== 0 ? <Test /> : <Result />}
             {/* <Result /> */}
-            {showCmd && <CommandLine setShowCmd={setShowCmd} />}
+            {isCmdLine && <CommandLine />}
         </>
     );
 }

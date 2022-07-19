@@ -2,11 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaInfo, FaKeyboard, FaCog, FaPalette } from "react-icons/fa";
 import { resetTest } from "../helpers/resetTest";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsCmdLine } from "../store/actions";
 
 function Navbar() {
+    const {
+        toggle: { isCmdLine },
+    } = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     const handleChangeRoute = () => {
         resetTest();
+    }
+
+    const handleSetting = () => {
+        dispatch(setIsCmdLine(true))
     }
 
     return (
@@ -25,7 +35,7 @@ function Navbar() {
                 <div className="button">
                     <FaPalette />
                 </div>
-                <div className="button">
+                <div className="button" onClick={handleSetting}>
                     <FaCog  />
                 </div>
             </div>

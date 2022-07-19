@@ -1,3 +1,10 @@
 .footer {
     height: 100px;
+    display: flex;
+
+    .textButton {
+        display: flex;
+        align-items: baseline;
+        text-decoration: none;
+    }
 }

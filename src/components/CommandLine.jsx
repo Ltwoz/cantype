@@ -36,8 +36,8 @@ function CommandLine() {
                     console.log("this thing has to input");
                 } else if (obj.subgroup) {
                     setSubgroup(true);
-                    // setCommand(obj.subgroup.list);
                     setCurrentCommands(obj.subgroup);
+                    dispatch(setIsCmdLine(true));
                 } else {
                     if (obj.exec) {
                         obj.exec();
@@ -48,11 +48,16 @@ function CommandLine() {
         });
     };
 
-    const restoreCommand = (sshow = true) => {
-        if (filteredSearch.length < 1) {
-            setCurrentCommands(defalutCommands);
-        }
-    };
+    const escReturn = () => {
+        currentCommands.list.forEach((obj, idx) => {
+            if (obj.subgroup) {
+                dispatch(setIsCmdLine(false));
+            } else {
+                setCurrentCommands(defalutCommands);
+                dispatch(setIsCmdLine(true));
+            }
+        })
+    }
 
     const handlePalletKeys = (e) => {
         if (e.key) {
@@ -62,8 +67,8 @@ function CommandLine() {
             e.preventDefault();
         }
         if (e.key === "Escape" && isCmdLine === true) {
-            dispatch(setIsCmdLine(false));
             e.preventDefault();
+            escReturn();
         }
         if (e.key === "Enter") {
             e.preventDefault();
@@ -71,7 +76,6 @@ function CommandLine() {
                 .querySelector(".cmdlist.activeCmd")
                 .getAttribute("command");
             trigger(command);
-            return;
         }
         if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "Tab") {
             e.preventDefault();

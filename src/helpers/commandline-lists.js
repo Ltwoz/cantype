@@ -1,3 +1,6 @@
+import { setTimeConfig } from "./config";
+import { resetTest } from "./resetTest";
+
 const commandsTimeConfig = {
     title: "Change time config...",
     list: [
@@ -5,34 +8,54 @@ const commandsTimeConfig = {
             id: "changeTimeConfig15",
             display: "15",
             configValue: 15,
-            exec: () => {console.log("chang time 15");}
+            exec: () => {
+                console.log("chang time 15");
+                setTimeConfig(15);
+                resetTest();
+            },
         },
         {
             id: "changeTimeConfig30",
             display: "30",
             configValue: 30,
-            exec: () => {console.log("chang time 30");}
+            exec: () => {
+                console.log("chang time 30");
+                setTimeConfig(30);
+                resetTest();
+            },
         },
         {
             id: "changeTimeConfig45",
             display: "45",
             configValue: 45,
-            exec: () => {console.log("chang time 45");}
+            exec: () => {
+                console.log("chang time 45");
+                setTimeConfig(45);
+                resetTest();
+            },
         },
         {
             id: "changeTimeConfig60",
             display: "60",
             configValue: 60,
-            exec: () => {console.log("chang time 60");}
+            exec: () => {
+                console.log("chang time 60");
+                setTimeConfig(60);
+                resetTest();
+            },
         },
         {
             id: "changeTimeConfig120",
             display: "120",
             configValue: 120,
-            exec: () => {console.log("chang time 120");}
+            exec: () => {
+                console.log("chang time 120");
+                setTimeConfig(120);
+                resetTest();
+            },
         },
-    ]
-}
+    ],
+};
 
 const commandsTypeConfig = {
     title: "Change type config...",
@@ -41,22 +64,28 @@ const commandsTypeConfig = {
             id: "changeTypeConfigTime",
             display: "time",
             configValue: "time",
-            exec: () => {console.log("change type time");}
+            exec: () => {
+                console.log("change type time");
+            },
         },
         {
             id: "changeTypeConfigWord",
             display: "word",
             configValue: "word",
-            exec: () => {console.log("change type word");}
+            exec: () => {
+                console.log("change type word");
+            },
         },
         {
             id: "changeTypeConfigCustom",
             display: "custom",
             configValue: "custom",
-            exec: () => {console.log("change type custom");}
+            exec: () => {
+                console.log("change type custom");
+            },
         },
-    ]
-}
+    ],
+};
 
 export const defalutCommands = {
     title: "",
@@ -76,8 +105,8 @@ export const defalutCommands = {
             display: "Theme...",
             subgroup: commandsTypeConfig,
         },
-    ]
-}
+    ],
+};
 
 export let currentCommands = defalutCommands;
 export function setCurrentCommands(commands) {

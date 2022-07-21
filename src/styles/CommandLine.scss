@@ -42,7 +42,7 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            // overflow-y: scroll;
+            overflow-y: scroll;
             max-height: calc(100vh - 33.2rem);
 
             .cmdlist {

@@ -6,6 +6,7 @@ import { ResetButton } from "./ResetButton";
 function Result() {
     const {
         word: { wordList, typedHistory, currWord },
+        preferences: { timeLimit }
     } = useSelector((state) => state);
 
     let totalChars = 0;
@@ -33,7 +34,7 @@ function Result() {
             }
         }
     }
-    const wpm = Math.round(((correctChars + spaces) * 60) / 30 / 5);
+    const wpm = Math.round(((correctChars + spaces) * 60) / timeLimit / 5);
     const acc = Math.round((correctChars / totalChars) * 100);
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function Result() {
         console.log("totalchar : ", totalChars);
         console.log("correctChar : ", correctChars);
         console.log("incorrectChar : ", incorrectChars);
+        console.log("spaces : ", spaces);
     }, []);
 
     return (

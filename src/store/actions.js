@@ -9,7 +9,7 @@ export const SET_WORDLIST = "SETWORDLIST";
 export const SET_REF = "SETREF";
 export const SET_CARET_REF = "SETCARETREF";
 export const SET_THEME = "SETTHEME";
-export const SET_TIME =- "SETTIME";
+export const SET_TIME = "SETTIME";
 export const SET_IS_CMDLINE = "SETISCMDLINE";
 
 // Timer Actions

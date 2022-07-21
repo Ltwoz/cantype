@@ -28,7 +28,7 @@ export const initialState = {
         activeWordRef: null,
         caretRef: null,
     },
-    preference: {
+    preferences: {
         theme: "",
         timeLimit: 30,
     },
@@ -114,15 +114,13 @@ const wordReducer = (state = initialState.word, { type, payload }) => {
     }
 };
 
-const preferenceReducer = (state = initialState.preference, {type, payload}) => {
+// Preference Reducer
+const preferenceReducer = (state = initialState.preferences, {type, payload}) => {
     switch (type) {
         case SET_THEME:
             return {...state, theme: payload};
         case SET_TIME:
-            return {
-                ...state,
-                timeLimit: payload,
-            };
+            return {...state, timeLimit: payload};
         default:
             return state;
     }

@@ -21,7 +21,7 @@ function Test() {
 
     return (
         <div className="typingTest">
-            <div className="timer">{timer}</div>
+            <div className="timer" style={{opacity: 1}}>{timer}</div>
             <div className="wordWrapper">
                 <div className="type-box">
                     {wordList.map((word, idx) => {

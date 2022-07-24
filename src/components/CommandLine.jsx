@@ -152,7 +152,7 @@ function CommandLine() {
                         placeholder="Type to search"
                         type="text"
                         ref={commandInput}
-                        // onBlur={({target}) => {target.focus()}}
+                        onBlur={({target}) => {target.focus()}}
                         autoFocus
                         maxLength={32}
                         onChange={(e) => {

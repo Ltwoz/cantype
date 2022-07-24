@@ -12,6 +12,7 @@ import {
     SET_CARET_REF,
     SET_THEME,
     SET_TIME,
+    SET_MODE,
     SET_IS_CMDLINE
 } from "./actions";
 
@@ -31,6 +32,7 @@ export const initialState = {
     preferences: {
         theme: "",
         timeLimit: 30,
+        mode: "time"
     },
     toggle: {
         isCmdLine: false,
@@ -121,6 +123,8 @@ const preferenceReducer = (state = initialState.preferences, {type, payload}) =>
             return {...state, theme: payload};
         case SET_TIME:
             return {...state, timeLimit: payload};
+        case SET_MODE:
+            return {...state, mode: payload};
         default:
             return state;
     }

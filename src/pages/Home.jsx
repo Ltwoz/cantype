@@ -73,7 +73,7 @@ function Home() {
 
     return (
         <>
-            {timer !== 0 ? <Test /> : <Result />}
+            {timer !== 999 ? <Test /> : <Result />}
             {/* <Result /> */}
             {isCmdLine && <CommandLine />}
         </>

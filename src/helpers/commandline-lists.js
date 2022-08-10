@@ -86,7 +86,7 @@ const commandsTypeConfig = {
             configValue: "custom",
             exec: () => {
                 console.log("change type custom");
-                setModeConfig("custom");
+                setModeConfig("custom"); 
                 resetTest();
             },
         },

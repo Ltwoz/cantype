@@ -56,7 +56,12 @@
                     border-radius: 0 0 0.5rem 0.5rem;
                 }
 
-                &.activeCmd {
+                &.activeKeyboard {
+                    background: #ededed;
+                    color: #141414;
+                    cursor: pointer;
+                }
+                &.activeMouse {
                     background: #ededed;
                     color: #141414;
                     cursor: pointer;

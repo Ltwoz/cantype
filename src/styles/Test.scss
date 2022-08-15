@@ -9,7 +9,7 @@
     }
     
     .timer {
-        color: #DA0037;
+        color: var(--hl-color);
         font-size: 1.5rem;
         margin-left: 0.37rem;
     }
@@ -27,7 +27,7 @@
             user-select: none;
             height: 156px;
             padding-bottom: 1em;
-            color: #444444;
+            color: var(--fg-color);
     
             .word {
                 position: relative;
@@ -41,16 +41,16 @@
         
                 &.wrong {
                     // color: #444444;
-                    border-bottom: 2px solid #DA0037;
+                    border-bottom: 2px solid var(--error-color);
                 }
             }
             
             span.right {
-                color: #ededed;
+                color: var(--hl-color);
             }
         
             span.wrong {
-                color: #DA0037;
+                color: var(--error-color) !important;
             }
         
             .extra {
@@ -62,7 +62,7 @@
                 margin-left: -7.29165px;
                 width: 2px;
                 position: absolute;
-                color: #DA0037;
+                color: var(--hl-color);
         
                 &.blink {
                     animation: blink 1.5s infinite 1s;

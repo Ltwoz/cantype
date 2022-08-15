@@ -7,10 +7,10 @@
     .reset-button {
         cursor: pointer;
         transition: .125s;
-        color: #444444;
+        color: var(--fg-color);
     
         &:hover{
-            color: #ededed;
+            color: var(--font-color);
         }
     }
 }

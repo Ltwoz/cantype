@@ -10,7 +10,9 @@ export const SET_REF = "SETREF";
 export const SET_CARET_REF = "SETCARETREF";
 export const SET_THEME = "SETTHEME";
 export const SET_TIME = "SETTIME";
+export const SET_MODE = "SETMODE";
 export const SET_IS_CMDLINE = "SETISCMDLINE";
+export const SET_IS_THEME = "SETISTHEME";
 
 // Timer Actions
 export const timerDecrement = () => ({type: TIMER_DECREMENT});
@@ -30,6 +32,8 @@ export const setCaretRef = (payload) => ({type: SET_CARET_REF, payload});
 // Preferences Actions
 export const setTheme = (payload) => ({type: SET_THEME, payload});
 export const setTime = (payload) => ({type: SET_TIME, payload});
+export const setMode = (payload) => ({type: SET_MODE, payload});
 
 // Toggle Actions
 export const setIsCmdLine = (payload) => ({type: SET_IS_CMDLINE, payload});
+export const setIsTheme = (payload) => ({type: SET_IS_THEME, payload});

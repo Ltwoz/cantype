@@ -17,20 +17,8 @@ function CommandLine() {
     const [inputVal, setInputVal] = useState("");
     const [subgroup, setSubgroup] = useState(false);
     const [isInput, setIsInput] = useState(false);
+    const [cmdMouseMode, setCmdMouseMode] = useState(false);
     const commandInput = useRef(null);
-
-    useEffect(() => {
-        const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
-        if (cmdLists.length > 0) {
-            const cmd = document.querySelector(".cmdlist.activeCmd");
-            if (cmd) {
-                cmdLists.forEach((obj, idx) => {
-                    obj.classList.remove("activeCmd");
-                });
-            }
-            cmdLists[0].classList.add("activeCmd");
-        }
-    })
 
     const filteredSearch = currentCommands.list.filter((val) => {
         if (inputVal === "") {
@@ -70,8 +58,8 @@ function CommandLine() {
                 setCurrentCommands(defalutCommands);
                 dispatch(setIsCmdLine(true));
             }
-        })
-    }
+        });
+    };
 
     const handlePalletKeys = (e) => {
         if (e.key) {
@@ -86,10 +74,18 @@ function CommandLine() {
         }
         if (e.key === "Enter") {
             e.preventDefault();
-            const command = document
-                .querySelector(".cmdlist.activeCmd")
-                .getAttribute("command");
-            trigger(command);
+            const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
+
+            cmdLists.forEach((obj, idx) => {
+                if (!obj.classList.contains("activeKeyboard")) {
+                    return;
+                } else {
+                    const command = document
+                        .querySelector(".cmdlist.activeKeyboard")
+                        .getAttribute("command");
+                    trigger(command);
+                }
+            });
         }
         if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "Tab") {
             e.preventDefault();
@@ -97,50 +93,102 @@ function CommandLine() {
             let activenum = -1;
 
             cmdLists.forEach((obj, idx) => {
-                if (obj.classList.contains("activeCmd")) {
+                if (obj.classList.contains("activeKeyboard")) {
                     activenum = idx;
                 }
             });
 
             if (e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey)) {
                 cmdLists.forEach((obj, idx) => {
-                    obj.classList.remove("activeCmd");
+                    obj.classList.remove("activeKeyboard");
                 });
                 if (activenum === 0) {
-                    cmdLists[cmdLists.length - 1].classList.add("activeCmd");
+                    cmdLists[cmdLists.length - 1].classList.add(
+                        "activeKeyboard"
+                    );
                 } else {
-                    cmdLists[--activenum].classList.add("activeCmd");
+                    cmdLists[--activenum].classList.add("activeKeyboard");
                 }
             }
 
             if (e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey)) {
                 cmdLists.forEach((obj, idx) => {
-                    obj.classList.remove("activeCmd");
+                    obj.classList.remove("activeKeyboard");
                 });
                 if (activenum + 1 == cmdLists.length) {
-                    cmdLists[0].classList.add("activeCmd");
+                    cmdLists[0].classList.add("activeKeyboard");
                 } else {
-                    cmdLists[++activenum].classList.add("activeCmd");
+                    cmdLists[++activenum].classList.add("activeKeyboard");
                 }
             }
             document
-                .querySelector(".cmdlist.activeCmd")
+                .querySelector(".cmdlist.activeKeyboard")
                 .scrollIntoView({ block: "nearest" });
         }
         e.stopPropagation();
     };
 
-    const handleClick = (e) => {
+    const handleExitClick = (e) => {
         if (e.target.getAttribute("class") === "commandLineWrapper") {
             dispatch(setIsCmdLine(false));
         }
+    };
+
+    const handleInputKeyup = (e) => {
+        const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
+        setCmdMouseMode(false);
+        cmdLists.forEach((obj) => {
+            if (e.key === "Escape") return;
+            else {
+                obj.classList.remove("activeMouse");
+            }
+        });
+        if (
+            e.key === "ArrowUp" ||
+            e.key === "ArrowDown" ||
+            e.key === "Enter" ||
+            e.key === "Tab" ||
+            e.key === "Escape" ||
+            e.key.length > 1
+        ) {
+            return;
+        }
+    };
+
+    const handleMouseMove = () => {
+        if (!cmdMouseMode) {
+            setCmdMouseMode(true);
+        }
+    };
+
+    const handleMouseOver = () => {
+        if (!cmdMouseMode) return;
+        const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
+        cmdLists.forEach((obj) => {
+            obj.classList.remove("activeKeyboard");
+        });
+    };
+
+    const handleMouseEnter = (e) => {
+        if (!cmdMouseMode) return;
+        e.target.classList.add("activeMouse");
+    };
+
+    const handleMouseLeave = (e) => {
+        if (!cmdMouseMode) return;
+        e.target.classList.remove("activeMouse");
+    };
+
+    const handleListClick = (e) => {
+        trigger(e.currentTarget.getAttribute("command"));
     };
 
     return (
         <div
             className="commandLineWrapper"
             onKeyDown={handlePalletKeys}
-            onClick={handleClick}
+            onClick={handleExitClick}
+            onMouseMove={handleMouseMove}
         >
             <div className="commandLine">
                 <div className="input-box">
@@ -152,19 +200,29 @@ function CommandLine() {
                         placeholder="Type to search"
                         type="text"
                         ref={commandInput}
-                        // onBlur={({target}) => {target.focus()}}
+                        onBlur={({ target }) => {
+                            target.focus();
+                        }}
                         autoFocus
                         maxLength={32}
                         onChange={(e) => {
                             setInputVal(e.target.value);
                         }}
+                        onKeyUp={handleInputKeyup}
                         value={inputVal}
                     />
                 </div>
                 {filteredSearch.length > 0 && (
-                    <div className="suggestions">
+                    <div className="suggestions" onMouseOver={handleMouseOver}>
                         {filteredSearch.map((obj, idx) => (
-                            <div className="cmdlist" command={obj.id} key={idx}>
+                            <div
+                                className="cmdlist"
+                                command={obj.id}
+                                key={idx}
+                                onMouseOver={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                onClick={handleListClick}
+                            >
                                 {obj.display}
                             </div>
                         ))}

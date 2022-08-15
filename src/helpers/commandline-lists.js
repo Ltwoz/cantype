@@ -1,4 +1,4 @@
-import { setTimeConfig } from "./config";
+import { setModeConfig, setTimeConfig } from "./config";
 import { resetTest } from "./resetTest";
 
 const commandsTimeConfig = {
@@ -66,14 +66,18 @@ const commandsTypeConfig = {
             configValue: "time",
             exec: () => {
                 console.log("change type time");
+                setModeConfig("time");
+                resetTest();
             },
         },
         {
-            id: "changeTypeConfigWord",
-            display: "word",
-            configValue: "word",
+            id: "changeTypeConfigWords",
+            display: "words",
+            configValue: "words",
             exec: () => {
-                console.log("change type word");
+                console.log("change type words");
+                setModeConfig("words");
+                resetTest();
             },
         },
         {
@@ -82,6 +86,8 @@ const commandsTypeConfig = {
             configValue: "custom",
             exec: () => {
                 console.log("change type custom");
+                setModeConfig("custom"); 
+                resetTest();
             },
         },
     ],

@@ -21,6 +21,7 @@
     transition: 0.3s;
     margin: 50px 0 25px;
     cursor: pointer;
+    color: var(--font-color);
 }
 
 .menu {
@@ -35,11 +36,11 @@
         display: flex;
         align-items: center;
         transition: .15s;
-        color: #DA0037;                                             //highlight color
+        color: var(--hl-color);                                             //highlight color
         cursor: pointer;
 
         &:hover {
-            color: #ededed;
+            color: var(--font-color);
         }
     }
 }

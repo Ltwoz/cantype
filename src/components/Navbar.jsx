@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaInfo, FaKeyboard, FaCog, FaPalette } from "react-icons/fa";
 import { resetTest } from "../helpers/resetTest";
 import { useSelector, useDispatch } from "react-redux";
-import { setIsCmdLine } from "../store/actions";
+import { setIsCmdLine, setIsTheme } from "../store/actions";
 
 function Navbar() {
     const {
@@ -16,7 +16,11 @@ function Navbar() {
     }
 
     const handleSetting = () => {
-        dispatch(setIsCmdLine(true))
+        dispatch(setIsCmdLine(true));
+    }
+
+    const handleTheme = () => {
+        dispatch(setIsTheme(true));
     }
 
     return (
@@ -32,7 +36,7 @@ function Navbar() {
                 <Link to="/About" className="button" onClick={handleChangeRoute}>
                     <FaInfo />
                 </Link>
-                <div className="button">
+                <div className="button" onClick={handleTheme}>
                     <FaPalette />
                 </div>
                 <div className="button" onClick={handleSetting}>

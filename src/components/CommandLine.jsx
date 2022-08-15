@@ -78,7 +78,7 @@ function CommandLine() {
 
             cmdLists.forEach((obj, idx) => {
                 if (!obj.classList.contains("activeKeyboard")) {
-                    return
+                    return;
                 } else {
                     const command = document
                         .querySelector(".cmdlist.activeKeyboard")
@@ -138,14 +138,17 @@ function CommandLine() {
         const cmdLists = Array.from(document.querySelectorAll(".cmdlist"));
         setCmdMouseMode(false);
         cmdLists.forEach((obj) => {
-            obj.classList.remove("activeMouse");
+            if (e.key === "Escape") return;
+            else {
+                obj.classList.remove("activeMouse");
+            }
         });
         if (
             e.key === "ArrowUp" ||
             e.key === "ArrowDown" ||
             e.key === "Enter" ||
             e.key === "Tab" ||
-            e.code == "AltLeft" ||
+            e.key === "Escape" ||
             e.key.length > 1
         ) {
             return;
@@ -177,7 +180,6 @@ function CommandLine() {
     };
 
     const handleListClick = (e) => {
-        e.target.classList.remove("activeMouse");
         trigger(e.currentTarget.getAttribute("command"));
     };
 
@@ -217,7 +219,7 @@ function CommandLine() {
                                 className="cmdlist"
                                 command={obj.id}
                                 key={idx}
-                                onMouseEnter={handleMouseEnter}
+                                onMouseOver={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
                                 onClick={handleListClick}
                             >

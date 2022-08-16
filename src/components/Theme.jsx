@@ -44,7 +44,6 @@ function Theme({ isTheme }) {
     const handleExitClick = (e) => {
         if (e.target.getAttribute("id") === "theme-main") {
             dispatch(setIsTheme(false));
-            console.log("clicked");
         }
     };
 

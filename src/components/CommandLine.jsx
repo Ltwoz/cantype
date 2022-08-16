@@ -131,6 +131,7 @@ function CommandLine() {
     const handleExitClick = (e) => {
         if (e.target.getAttribute("class") === "commandLineWrapper") {
             dispatch(setIsCmdLine(false));
+            setCurrentCommands(defalutCommands);
         }
     };
 

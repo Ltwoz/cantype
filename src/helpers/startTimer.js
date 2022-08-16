@@ -5,7 +5,7 @@ export const startTimer = () => {
     const { dispatch } = store;
     const timerId = setInterval(() => {
         dispatch(timerDecrement());
-    }, 1000);
+    }, 100);
 
     dispatch(setTimerId(timerId));
 };

@@ -45,7 +45,7 @@ export const recordTest = (key, ctrlKey) => {
         preferences: { timeLimit }
     } = getState();
 
-    if (timer === 0) {
+    if (timer == 0 ) {
         if (key === "Tab") {
             resetTest();
         }

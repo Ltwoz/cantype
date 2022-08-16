@@ -1,11 +1,12 @@
 .footer {
-    height: 100px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 70px;
 
     .textButton {
         display: flex;
         align-items: baseline;
         text-decoration: none;
+        color: var(--font-color);
     }
 }

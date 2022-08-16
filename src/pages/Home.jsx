@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsCmdLine, setWordList, setTimerId } from "../store/actions";
 import { recordTest } from "../helpers/recordTest";
 import Result from "../components/Result";
-import CommandLine from "../components/CommandLine";
 import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
+import Timer from "../components/Timer";
 
 function Home() {
     const {
@@ -65,7 +65,7 @@ function Home() {
 
     //timer
     useEffect(() => {
-        if (timer === 0 && timerId) {
+        if (Math.ceil(timer) === 0 && timerId) {
             clearInterval(timerId);
             dispatch(setTimerId(null));
         }
@@ -73,7 +73,8 @@ function Home() {
 
     return (
         <>
-            {timer !== 0 ? <Test /> : <Result />}
+            <Timer />
+            {Math.ceil(timer) !== 0 ? <Test /> : <Result />}
         </>
     );
 }

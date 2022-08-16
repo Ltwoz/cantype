@@ -45,7 +45,7 @@ export const initialState = {
 const timerReducer = (state = initialState.time, { type, payload }) => {
     switch (type) {
         case TIMER_DECREMENT:
-            return { ...state, timer: state.timer - 1 };
+            return { ...state, timer: state.timer - 0.1 };
         case TIMER_SET:
             return { ...state, timer: payload };
         case TIMERID_SET:

@@ -5,7 +5,7 @@ import { setRef, setCaretRef } from "../store/actions";
 function Test() {
     const {
         word: { typedWord, currWord, wordList, typedHistory },
-        time: { timer },
+        time: { timer, timerId },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
     const extraLetters =
@@ -21,7 +21,7 @@ function Test() {
 
     return (
         <div className="typingTest">
-            <div className="timer" style={{opacity: 1}}>{timer}</div>
+            <div className="timer" style={{opacity: timerId ? 1 : 0}}>{Math.ceil(timer)}</div>
             <div className="wordWrapper">
                 <div className="type-box">
                     {wordList.map((word, idx) => {

@@ -43,5 +43,10 @@
         "name": "xoox",
         "bgColor": "#3c4756",
         "mainColor": "#f44c7f"
+    },
+    {
+        "name": "violet-night",
+        "bgColor": "#101820",
+        "mainColor": "#cf6bdd"
     }
 ]

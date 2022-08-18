@@ -12,7 +12,7 @@ function Theme({ isTheme }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const theme = localStorage.getItem("theme") || "mkbhd";
+        const theme = localStorage.getItem("theme") || "8008";
         dispatch(setTheme(theme));
     }, [dispatch]);
 

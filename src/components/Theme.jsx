@@ -12,7 +12,7 @@ function Theme({ isTheme }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const theme = localStorage.getItem("theme") || "8008";
+        const theme = localStorage.getItem("theme") || "mkbhd";
         dispatch(setTheme(theme));
     }, [dispatch]);
 
@@ -26,8 +26,8 @@ function Theme({ isTheme }) {
             document
                 .querySelector(`div[id="${theme}"]`)
                 ?.classList.add("selected");
-            // document.body.classList.remove(...options.map(obj => obj.name));
-            // document.body.classList.add(theme);
+            document.body.classList.remove(...options.map(obj => obj.name));
+            document.body.classList.add(theme);
             // document.querySelector('#theme').setAttribute('href', `./src/themes/${theme}.scss`)
             localStorage.setItem("theme", theme);
         }

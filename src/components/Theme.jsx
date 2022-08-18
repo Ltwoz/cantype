@@ -28,7 +28,7 @@ function Theme({ isTheme }) {
                 ?.classList.add("selected");
             // document.body.classList.remove(...options.map(obj => obj.name));
             // document.body.classList.add(theme);
-            document.querySelector('#theme').setAttribute('href', `./src/themes/${theme}.scss`)
+            // document.querySelector('#theme').setAttribute('href', `./src/themes/${theme}.scss`)
             localStorage.setItem("theme", theme);
         }
     }, [dispatch, theme]);

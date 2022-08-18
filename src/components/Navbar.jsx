@@ -4,6 +4,7 @@ import { FaInfo, FaKeyboard, FaCog, FaPalette } from "react-icons/fa";
 import { resetTest } from "../helpers/resetTest";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCmdLine, setIsTheme } from "../store/actions";
+import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
 
 function Navbar() {
     const {
@@ -17,6 +18,7 @@ function Navbar() {
 
     const handleSetting = () => {
         dispatch(setIsCmdLine(true));
+        setCurrentCommands(defalutCommands);
     }
 
     const handleTheme = () => {

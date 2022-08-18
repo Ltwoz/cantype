@@ -18,7 +18,7 @@ function App() {
             <div className="container">
                 <BrowserRouter>
                     <Navbar />
-                    <Theme isTheme={isTheme} />
+                    {/* <Theme isTheme={isTheme} /> */}
                     {isCmdLine && <CommandLine />}
                     <Routes>
                         <Route path="/" element={<Home />} />

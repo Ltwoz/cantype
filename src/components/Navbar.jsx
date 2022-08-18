@@ -5,6 +5,7 @@ import { resetTest } from "../helpers/resetTest";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCmdLine, setIsTheme } from "../store/actions";
 import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
+import mascot from "../public/mascot.png";
 
 function Navbar() {
     const {
@@ -28,7 +29,10 @@ function Navbar() {
     return (
         <div className="top">
             {/* Logo */}
-            <div className="logo">cantype</div>
+            <div className="logo">
+                <img src={mascot} alt="mas" className="mascot" />
+                <div className="logo-text">cantype</div>
+            </div>
 
             {/* Menu */}
             <div className="menu">

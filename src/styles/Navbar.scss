@@ -16,12 +16,24 @@
 }
 
 .logo {
-    font-size: 32px;
-    font-weight: bold;
-    transition: 0.3s;
-    margin: 50px 0 25px;
-    cursor: pointer;
-    color: var(--font-color);
+    position: relative;
+
+    .mascot {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 8px;
+        left: -85px;
+    }
+
+    .logo-text {
+        font-size: 42px;
+        font-weight: bold;
+        transition: 0.3s;
+        margin: 50px 0 25px;
+        cursor: pointer;
+        color: var(--font-color);
+    }
 }
 
 .menu {

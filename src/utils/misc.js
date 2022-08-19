@@ -16,3 +16,10 @@ export async function getThemeList() {
         return themeList;
     }
 }
+
+export function capitalizeFirstLetterOfEachWord(str) {
+    return str
+        .split(/ +/)
+        .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+        .join(" ");
+}

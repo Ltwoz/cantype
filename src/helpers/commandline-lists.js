@@ -1,5 +1,10 @@
+import { capitalizeFirstLetterOfEachWord, getThemeList } from "../utils/misc";
 import { setModeConfig, setTimeConfig } from "./config";
 import { resetTest } from "./resetTest";
+import { store } from "../store/store";
+import { setTheme } from "../store/actions";
+
+const { dispatch } = store;
 
 const commandsTimeConfig = {
     title: "Change time config...",
@@ -93,6 +98,25 @@ const commandsTypeConfig = {
     ],
 };
 
+const commandsThemeConfig = {
+    title: "Theme...",
+    configKey: "theme",
+    list: [],
+};
+
+getThemeList().then((themes) => {
+    themes.forEach((theme) => {
+        commandsThemeConfig.list.push({
+            id: "changeTheme" + capitalizeFirstLetterOfEachWord(theme.name),
+            display: theme.name.replace(/_/g, " "),
+            configValue: theme.name,
+            exec: () => {
+                dispatch(setTheme(theme.name))
+            }
+        })
+    })
+})
+
 export const defalutCommands = {
     title: "",
     list: [
@@ -109,7 +133,7 @@ export const defalutCommands = {
         {
             id: "changeThemeConfig",
             display: "Theme...",
-            subgroup: commandsTypeConfig,
+            subgroup: commandsThemeConfig,
         },
     ],
 };

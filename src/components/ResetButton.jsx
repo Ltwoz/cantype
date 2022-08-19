@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRedoAlt } from "react-icons/fa";
 import { resetTest } from "../helpers/resetTest";
 import { store } from "../store/store";

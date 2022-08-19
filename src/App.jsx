@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Theme from "./components/Theme";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CommandLine from "./components/CommandLine";
+import { setIsTheme } from "./store/actions";
 
 function App() {
     const {
         toggle: { isCmdLine, isTheme },
     } = useSelector((state) => state);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isTheme) {
+            if (isCmdLine) {
+                dispatch(setIsTheme(false))
+                console.log('close theme');
+            }
+        }
+    }, [isCmdLine])
 
     return (
         <div className="App">

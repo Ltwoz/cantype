@@ -8,7 +8,7 @@ import {
     setCurrentCommands,
     defalutCommands,
 } from "../helpers/commandline-lists";
-import defaultMascot from "../public/mascot-mkbhd.png";
+import Mascot from "./Mascot";
 
 function Navbar() {
     const {
@@ -16,16 +16,6 @@ function Navbar() {
         toggle: { isCmdLine },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
-
-    const [mascot, setMascot] = useState("");
-
-    useEffect(() => {
-        if (theme) {
-            import(`../public/mascot-${theme}.png`).then((pic) => {
-                setMascot(pic.default);
-            })
-        }
-    }, [theme]);
 
     const handleChangeRoute = () => {
         resetTest();
@@ -45,15 +35,7 @@ function Navbar() {
             {/* Logo */}
             <div className="logo">
                 <Link to="/" onClick={handleChangeRoute}>
-                    {/* <img src={mascot} alt=" " className="mascot" /> */}
-                    <img
-                        src={mascot}
-                        className="mascot"
-                        onError={({ currentTarget }) => {
-                            currentTarget.onerror = null; // prevents looping
-                            currentTarget.src = defaultMascot;
-                        }}
-                    />
+                    <Mascot />
                     <div className="logo-text">cantype</div>
                 </Link>
             </div>

@@ -28,12 +28,22 @@ function CommandLine() {
         }
     });
 
+    const showInput = (command, placeholder, defalutValue = "") => {
+        document.querySelector(".commandLine").classList.add('hidden');
+        document.querySelector("#commandInput").classList.remove('hidden');
+        document.querySelector("#commandInput input").setAttribute('placeholder', placeholder);
+        // document.querySelector("#commandInput input").val
+        document.querySelector("#commandInput input").setAttribute('command', "");
+        document.querySelector("#commandInput input").setAttribute('command', command);
+    }
+
     const trigger = (command) => {
         currentCommands.list.forEach((obj, idx) => {
             if (obj.id == command) {
                 if (obj.input) {
                     setIsInput(true);
                     const escaped = obj.display.split("</i>")[1] ?? obj.display;
+                    showInput(obj.id, escaped, obj.defaultValue)
                     console.log("this thing has to input");
                 } else if (obj.subgroup) {
                     setSubgroup(true);
@@ -201,9 +211,9 @@ function CommandLine() {
                         placeholder="Type to search"
                         type="text"
                         ref={commandInput}
-                        onBlur={({ target }) => {
-                            target.focus();
-                        }}
+                        // onBlur={({ target }) => {
+                        //     target.focus();
+                        // }}
                         autoFocus
                         maxLength={32}
                         onChange={(e) => {
@@ -229,6 +239,9 @@ function CommandLine() {
                         ))}
                     </div>
                 )}
+            </div>
+            <div id="commandInput" className="hidden">
+                <input className="input" placeholder="custom..." />
             </div>
         </div>
     );

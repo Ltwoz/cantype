@@ -59,6 +59,17 @@ const commandsTimeConfig = {
                 resetTest();
             },
         },
+        {
+            id: "changeTimeConfigCustom",
+            display: "custom",
+            input: true,
+            exec: (input) => {
+                if (!input) return;
+                console.log("chang time custom");
+                setTimeConfig(parseInt(input));
+                resetTest();
+            },
+        },
     ],
 };
 

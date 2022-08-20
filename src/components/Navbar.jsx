@@ -1,52 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaInfo, FaKeyboard, FaCog, FaPalette } from "react-icons/fa";
 import { resetTest } from "../helpers/resetTest";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCmdLine, setIsTheme } from "../store/actions";
-import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
-import mascot from "../public/mascot.png";
+import {
+    setCurrentCommands,
+    defalutCommands,
+} from "../helpers/commandline-lists";
+import defaultMascot from "../public/mascot-mkbhd.png";
 
 function Navbar() {
     const {
+        preferences: { theme },
         toggle: { isCmdLine },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
 
+    const [mascot, setMascot] = useState("");
+
+    useEffect(() => {
+        if (theme) {
+            import(`../public/mascot-${theme}.png`).then((pic) => {
+                setMascot(pic.default);
+            })
+        }
+    }, [theme]);
+
     const handleChangeRoute = () => {
         resetTest();
-    }
+    };
 
     const handleSetting = () => {
         dispatch(setIsCmdLine(true));
         setCurrentCommands(defalutCommands);
-    }
+    };
 
     const handleTheme = () => {
         dispatch(setIsTheme(true));
-    }
+    };
 
     return (
         <div className="top">
             {/* Logo */}
             <div className="logo">
-                <img src={mascot} alt="mas" className="mascot" />
-                <div className="logo-text">cantype</div>
+                <Link to="/" onClick={handleChangeRoute}>
+                    {/* <img src={mascot} alt=" " className="mascot" /> */}
+                    <img
+                        src={mascot}
+                        className="mascot"
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src = defaultMascot;
+                        }}
+                    />
+                    <div className="logo-text">cantype</div>
+                </Link>
             </div>
 
             {/* Menu */}
             <div className="menu">
-                <Link to="/" className="button">
+                <Link to="/" className="button" onClick={handleChangeRoute}>
                     <FaKeyboard />
                 </Link>
-                <Link to="/About" className="button" onClick={handleChangeRoute}>
+                <Link
+                    to="/About"
+                    className="button"
+                    onClick={handleChangeRoute}
+                >
                     <FaInfo />
                 </Link>
                 <div className="button" onClick={handleTheme}>
                     <FaPalette />
                 </div>
                 <div className="button" onClick={handleSetting}>
-                    <FaCog  />
+                    <FaCog />
                 </div>
             </div>
         </div>

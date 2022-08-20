@@ -18,22 +18,26 @@
 .logo {
     position: relative;
 
-    .mascot {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        top: 8px;
-        left: -85px;
-        cursor: pointer;
-    }
+    a {
+        text-decoration: none;
 
-    .logo-text {
-        font-size: 42px;
-        font-weight: bold;
-        transition: 0.3s;
-        margin: 50px 0 25px;
-        cursor: pointer;
-        color: var(--font-color);
+        .mascot {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 8px;
+            left: -85px;
+            cursor: pointer;
+        }
+    
+        .logo-text {
+            font-size: 42px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 50px 0 25px;
+            cursor: pointer;
+            color: var(--font-color);
+        }
     }
 }
 

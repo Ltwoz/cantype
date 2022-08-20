@@ -8,8 +8,9 @@
     left: 0;
     padding: 15rem 0;
     display: flex;
-    justify-content: center;
-    align-items: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     animation: fade-in .4s;
 
     .commandLine {
@@ -68,6 +69,23 @@
                     cursor: pointer;
                 }
             }
+        }
+    }
+
+    #commandInput {
+        background: var(--bg-color);
+        border-radius: 0.5rem;
+        width: 450px;
+
+        .input {
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--hl-color);
+            background: var(--bg-color);
+            font-size: 1rem;
+            outline: none;
+            padding: 1rem;
+            width: 100%;
         }
     }
 }

@@ -1,8 +1,6 @@
 export const MascotColor = ({ fill, zIndex }) => {
     return (
         <svg
-            version="1.0"
-            xmlns="http://www.w3.org/2000/svg"
             width="100px"
             height="100px"
             viewBox="0 0 803.000000 803.000000"
@@ -100,8 +98,6 @@ export const MascotColor = ({ fill, zIndex }) => {
 export const MascotCStroke = ({ fill, zIndex }) => {
     return (
         <svg
-            version="1.0"
-            xmlns="http://www.w3.org/2000/svg"
             width="100px"
             height="100px"
             viewBox="0 0 803.000000 803.000000"
@@ -133,8 +129,6 @@ export const MascotCStroke = ({ fill, zIndex }) => {
 export const MascotShadow = ({ fill, zIndex, opacity }) => {
     return (
         <svg
-            version="1.0"
-            xmlns="http://www.w3.org/2000/svg"
             width="100px"
             height="100px"
             viewBox="0 0 803.000000 803.000000"
@@ -242,6 +236,46 @@ export const MascotShadow = ({ fill, zIndex, opacity }) => {
                 <path
                     d="M4653 946 c-32 -24 -69 -49 -82 -56 l-25 -13 23 -18 c33 -27 110 -26
             145 2 22 18 26 28 26 75 0 67 -9 68 -87 10z"
+                />
+            </g>
+        </svg>
+    );
+};
+
+export const MascotEyes = ({ fill, zIndex }) => {
+    return (
+        <svg
+            width="100px"
+            height="100px"
+            viewBox="0 0 803.000000 803.000000"
+            preserveAspectRatio="xMidYMid meet"
+            style={{ fill: fill, zIndex: zIndex }}
+        >
+            <g
+                transform="translate(0.000000,803.000000) scale(0.100000,-0.100000)"
+                stroke="none"
+            >
+                <path
+                    d="M5015 4810 c-92 -6 -126 -14 -209 -45 -54 -20 -115 -48 -135 -61 -20
+                -13 -52 -34 -71 -46 -62 -41 -150 -135 -150 -161 0 -25 28 -57 48 -57 16 0 15
+                11 -3 34 -24 32 -18 49 33 97 97 93 194 152 332 201 58 20 83 23 235 22 197 0
+                225 -7 225 -55 0 -20 4 -29 13 -27 17 6 21 72 5 85 -18 14 -192 21 -323 13z"
+                />
+                <path
+                    d="M5320 4626 c-5 -15 -10 -32 -10 -37 0 -5 -22 -7 -52 -3 -90 10 -286
+                -21 -391 -63 -110 -43 -189 -84 -240 -125 -35 -28 -40 -29 -56 -14 -20 18 -41
+                21 -41 6 0 -14 42 -50 58 -50 13 0 76 44 111 78 24 24 164 89 251 118 74 24
+                102 28 220 29 177 2 167 0 174 37 8 42 -10 61 -24 24z"
+                />
+                <path
+                    d="M3195 4420 c-19 -21 -19 -21 22 -14 38 6 42 4 75 -37 30 -38 59 -88
+                149 -258 10 -18 24 -58 30 -87 11 -47 10 -56 -4 -72 -19 -20 -22 -42 -8 -42
+                13 0 51 50 51 67 0 49 -149 375 -198 435 -30 35 -89 39 -117 8z"
+                />
+                <path
+                    d="M3098 4367 c-18 -14 -28 -33 -28 -49 0 -56 93 -263 163 -362 58 -82
+                82 -99 135 -90 54 8 58 34 5 32 -21 -1 -51 5 -68 13 -52 25 -134 165 -166 283
+                -23 86 -24 139 -4 156 18 15 20 40 3 40 -7 -1 -25 -11 -40 -23z"
                 />
             </g>
         </svg>

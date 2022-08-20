@@ -16,10 +16,12 @@
 }
 
 .logo {
-    position: relative;
+    display: flex;
 
     a {
         text-decoration: none;
+        position: relative;
+        left: 35px;
 
         .mascot > * {
             position: absolute;
@@ -27,7 +29,7 @@
             height: 100px;
             top: 8px;
             left: -85px;
-            cursor: pointer;
+            cursor: pointer; 
         }
     
         .logo-text {

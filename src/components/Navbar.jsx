@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaInfo, FaKeyboard, FaCog, FaPalette } from "react-icons/fa";
 import { resetTest } from "../helpers/resetTest";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setIsCmdLine, setIsTheme } from "../store/actions";
 import {
     setCurrentCommands,
@@ -11,12 +11,7 @@ import {
 import Mascot from "./Mascot";
 
 function Navbar() {
-    const {
-        preferences: { theme },
-        toggle: { isCmdLine },
-    } = useSelector((state) => state);
     const dispatch = useDispatch();
-
     const handleChangeRoute = () => {
         resetTest();
     };

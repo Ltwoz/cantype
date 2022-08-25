@@ -43,5 +43,30 @@
         "name": "violet-night",
         "bgColor": "#101820",
         "mainColor": "#cf6bdd"
+    },
+    {
+        "name": "aqua",
+        "bgColor": "#294851",
+        "mainColor": "#73c1d9"
+    },
+    {
+        "name": "halloween",
+        "bgColor": "#32313c",
+        "mainColor": "#e8880c"
+    },
+    {
+        "name": "paradise",
+        "bgColor": "#1d2f36",
+        "mainColor": "#15a6ca"
+    },
+    {
+        "name": "joker",
+        "bgColor": "#3a303e",
+        "mainColor": "#6fb24f"
+    },
+    {
+        "name": "pink-hades",
+        "bgColor": "#1a181a",
+        "mainColor": "#d1227b"
     }
 ]

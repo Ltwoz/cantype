@@ -19,8 +19,7 @@ export function ResetButton(props) {
     };
 
     return (
-        <div className="bottom
-        ">
+        <div className="bottom">
             <div className="reset-button" onClick={Math.ceil(timer) === 0 ? endReset : reset}>
                 <FaRedoAlt size={props.size} />
             </div>

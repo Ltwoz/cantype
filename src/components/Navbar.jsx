@@ -9,6 +9,7 @@ import {
     defalutCommands,
 } from "../helpers/commandline-lists";
 import Mascot from "./Mascot";
+import Tooltip from "./Tooltip";
 
 function Navbar() {
     const dispatch = useDispatch();
@@ -37,22 +38,30 @@ function Navbar() {
 
             {/* Menu */}
             <div className="menu">
-                <Link to="/" className="button" onClick={handleChangeRoute}>
-                    <FaKeyboard />
-                </Link>
-                <Link
-                    to="/About"
-                    className="button"
-                    onClick={handleChangeRoute}
-                >
-                    <FaInfo />
-                </Link>
-                <div className="button" onClick={handleTheme}>
-                    <FaPalette />
-                </div>
-                <div className="button" onClick={handleSetting}>
-                    <FaCog />
-                </div>
+                <Tooltip text="Home">
+                    <Link to="/" className="button" onClick={handleChangeRoute}>
+                        <FaKeyboard />
+                    </Link>
+                </Tooltip>
+                <Tooltip text="About">
+                    <Link
+                        to="/About"
+                        className="button"
+                        onClick={handleChangeRoute}
+                    >
+                        <FaInfo />
+                    </Link>
+                </Tooltip>
+                <Tooltip text="Theme">
+                    <div className="button" onClick={handleTheme}>
+                        <FaPalette />
+                    </div>
+                </Tooltip>
+                <Tooltip text="Setting">
+                    <div className="button" onClick={handleSetting}>
+                        <FaCog />
+                    </div>
+                </Tooltip>
             </div>
         </div>
     );

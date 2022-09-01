@@ -2,11 +2,20 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 70px;
+    color: var(--font-color);
 
     .textButton {
         display: flex;
         align-items: center;
         text-decoration: none;
         color: var(--font-color);
+    }
+
+    .left-footer {
+        display: flex;
+        
+        & > * {
+            margin-right: 1.5rem;
+        }
     }
 }

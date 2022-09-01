@@ -9,43 +9,46 @@ import { resetTest } from "./resetTest";
 import { startTimer } from "./startTimer";
 
 const handleBackspace = (ctrlKey) => {
-    const { dispatch, getState } = store
+    const { dispatch, getState } = store;
     const {
         word: { typedWord, typedHistory, currWord, activeWordRef, wordList },
-    } = getState()
-    const currIdx = wordList.indexOf(currWord)
+    } = getState();
+    const currIdx = wordList.indexOf(currWord);
     const currWordEl = activeWordRef?.current;
 
-    if (typedWord.length === 0 && typedHistory[currIdx - 1] !== wordList[currIdx - 1]) {
+    if (
+        typedWord.length === 0 &&
+        typedHistory[currIdx - 1] !== wordList[currIdx - 1]
+    ) {
         dispatch(backtrackWord(ctrlKey));
         currWordEl.previousElementSibling.classList.remove("right", "wrong");
         if (ctrlKey) {
             currWordEl.previousElementSibling.childNodes.forEach((char) => {
                 char.classList.remove("wrong", "right");
-            })
+            });
         }
     } else {
         if (ctrlKey) {
             dispatch(setTypedWord(""));
             currWordEl.childNodes.forEach((char) => {
                 char.classList.remove("wrong", "right");
-            })
+            });
         } else {
-            const newTypedWord = typedWord.slice(0, typedWord.length - 1)
+            const newTypedWord = typedWord.slice(0, typedWord.length - 1);
             dispatch(setTypedWord(newTypedWord));
         }
-    }    
-}
+    }
+};
 
 export const recordTest = (key, ctrlKey) => {
     const { dispatch, getState } = store;
     const {
         time: { timer, timerId },
         word: { typedWord, currWord, activeWordRef, caretRef },
-        preferences: { timeLimit }
+        preferences: { timeLimit },
     } = getState();
 
-    if (Math.ceil(timer) == 0 ) {
+    if (Math.ceil(timer) == 0) {
         if (key === "Tab") {
             resetTest();
         }
@@ -55,7 +58,7 @@ export const recordTest = (key, ctrlKey) => {
     if (timerId === null && key !== "Tab") startTimer();
 
     const currWordEl = activeWordRef?.current;
-    currWordEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    // currWordEl.scrollIntoView({ behavior: "smooth", inline: "start" });
 
     const caret = caretRef?.current;
     caret.classList.remove("blink");
@@ -68,9 +71,11 @@ export const recordTest = (key, ctrlKey) => {
                 document.getElementsByClassName("word")[0].scrollIntoView();
             }
             break;
-            
+
         case " ":
-            if (typedWord === "") return 
+            if (typedWord === "") return;
+            currWordEl.scrollIntoView({ behavior: "smooth", block: "start" });
+            console.log(currWordEl);
             currWordEl.classList.add(
                 typedWord !== currWord ? "wrong" : "right"
             );

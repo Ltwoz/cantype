@@ -33,12 +33,9 @@ function About() {
                 </p>
             </div>
             <div className="section">
-                <h1>credit</h1>
+                <h1>contributors</h1>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolore dicta libero eius possimus pariatur sint velit
-                    deleniti, ut modi labore quod repellat dolor consequuntur
-                    ratione id quaerat voluptatibus doloribus ab.
+                    นายวรภัทร เชิดชูสกุลรัตน์
                 </p>
             </div>
         </div>

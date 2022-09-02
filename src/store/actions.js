@@ -11,6 +11,7 @@ export const SET_CARET_REF = "SETCARETREF";
 export const SET_THEME = "SETTHEME";
 export const SET_TIME = "SETTIME";
 export const SET_MODE = "SETMODE";
+export const SET_LAYOUT = "SETLAYOUT";
 export const SET_IS_CMDLINE = "SETISCMDLINE";
 export const SET_IS_THEME = "SETISTHEME";
 
@@ -33,6 +34,7 @@ export const setCaretRef = (payload) => ({type: SET_CARET_REF, payload});
 export const setTheme = (payload) => ({type: SET_THEME, payload});
 export const setTime = (payload) => ({type: SET_TIME, payload});
 export const setMode = (payload) => ({type: SET_MODE, payload});
+export const setLayout = (payload) => ({type: SET_LAYOUT, payload});
 
 // Toggle Actions
 export const setIsCmdLine = (payload) => ({type: SET_IS_CMDLINE, payload});

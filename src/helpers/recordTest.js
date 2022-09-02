@@ -45,7 +45,7 @@ export const recordTest = (key, ctrlKey) => {
     const {
         time: { timer, timerId },
         word: { typedWord, currWord, activeWordRef, caretRef },
-        preferences: { timeLimit },
+        preferences: { timeLimit, layout },
     } = getState();
 
     if (Math.ceil(timer) == 0) {
@@ -58,7 +58,11 @@ export const recordTest = (key, ctrlKey) => {
     if (timerId === null && key !== "Tab") startTimer();
 
     const currWordEl = activeWordRef?.current;
-    // currWordEl.scrollIntoView({ behavior: "smooth", inline: "start" });
+    const nextWord = currWord
+
+    if (layout === "multi") {
+        currWordEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
 
     const caret = caretRef?.current;
     caret.classList.remove("blink");
@@ -74,8 +78,9 @@ export const recordTest = (key, ctrlKey) => {
 
         case " ":
             if (typedWord === "") return;
-            currWordEl.scrollIntoView({ behavior: "smooth", block: "start" });
-            console.log(currWordEl);
+            if (layout === "single") {
+                currWordEl.scrollIntoView({ behavior: "smooth", inline: "start" });
+            }
             currWordEl.classList.add(
                 typedWord !== currWord ? "wrong" : "right"
             );

@@ -8,6 +8,7 @@ import Theme from "./components/Theme";
 import { useSelector, useDispatch } from "react-redux";
 import CommandLine from "./components/CommandLine";
 import { setIsTheme } from "./store/actions";
+import { setLayoutConfig, setModeConfig, setTimeConfig } from "./helpers/config";
 
 function App() {
     const {
@@ -23,6 +24,16 @@ function App() {
             }
         }
     }, [isCmdLine])
+
+    useEffect(() => {
+        const time = localStorage.getItem("time") || 30;
+        const type = localStorage.getItem("type") || "time";
+        const layout = localStorage.getItem("layout") || "multi";
+
+        setTimeConfig(time);
+        setModeConfig(type);
+        setLayoutConfig(layout);
+    }, [dispatch])
 
     return (
         <div className="App">

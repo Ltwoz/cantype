@@ -1,5 +1,5 @@
 import { capitalizeFirstLetterOfEachWord, getThemeList } from "../utils/misc";
-import { setModeConfig, setTimeConfig } from "./config";
+import { setLayoutConfig, setModeConfig, setTimeConfig } from "./config";
 import { resetTest } from "./resetTest";
 import { store } from "../store/store";
 import { setTheme } from "../store/actions";
@@ -115,6 +115,32 @@ const commandsThemeConfig = {
     list: [],
 };
 
+const commandsLayoutConfig = {
+    title: "Layout...",
+    list: [
+        {
+            id: "changeLayoutSingle",
+            display: "Single",
+            configValue: "single",
+            exec: () => {
+                console.log("changed layout single");
+                setLayoutConfig("single");
+                resetTest();
+            }
+        },
+        {
+            id: "changeLayoutMulti",
+            display: "Multi",
+            configValue: "multi",
+            exec: () => {
+                console.log("changed layout multi");
+                setLayoutConfig("multi");
+                resetTest();
+            }
+        },
+    ]
+}
+
 getThemeList().then((themes) => {
     themes.forEach((theme) => {
         commandsThemeConfig.list.push({
@@ -145,6 +171,11 @@ export const defalutCommands = {
             id: "changeThemeConfig",
             display: "Theme...",
             subgroup: commandsThemeConfig,
+        },
+        {
+            id: "changeLayoutConfig",
+            display: "Layout...",
+            subgroup: commandsLayoutConfig,
         },
     ],
 };

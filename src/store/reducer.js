@@ -13,6 +13,7 @@ import {
     SET_THEME,
     SET_TIME,
     SET_MODE,
+    SET_LAYOUT,
     SET_IS_CMDLINE,
     SET_IS_THEME
 } from "./actions";
@@ -33,7 +34,8 @@ export const initialState = {
     preferences: {
         theme: "",
         timeLimit: 30,
-        mode: "time"
+        mode: "time",
+        layout: "multi",
     },
     toggle: {
         isCmdLine: false,
@@ -127,6 +129,8 @@ const preferenceReducer = (state = initialState.preferences, {type, payload}) =>
             return {...state, timeLimit: payload};
         case SET_MODE:
             return {...state, mode: payload};
+        case SET_LAYOUT:
+            return {...state, layout: payload};
         default:
             return state;
     }

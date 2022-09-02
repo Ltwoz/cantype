@@ -6,6 +6,7 @@ function Test() {
     const {
         word: { typedWord, currWord, wordList, typedHistory },
         time: { timer, timerId },
+        preferences: { layout },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
     const extraLetters =
@@ -23,7 +24,7 @@ function Test() {
         <div className="typingTest">
             <div className="timer" style={{opacity: timerId ? 1 : 0}}>{Math.ceil(timer)}</div>
             <div className="wordWrapper">
-                <div className="type-box">
+                <div className="type-box" style={layout === "multi" ? {"flexWrap":"wrap", "height": "156px"} : null}>
                     {wordList.map((word, idx) => {
                         const isActive =
                             currWord +

@@ -22,11 +22,10 @@
     
         .type-box {
             display: flex;
-            // flex-wrap: wrap;
             overflow: hidden;
             align-items: center;
             user-select: none;
-            // height: 156px;
+            height: fit-content;
             padding-bottom: 1em;
             color: var(--fg-color);
     

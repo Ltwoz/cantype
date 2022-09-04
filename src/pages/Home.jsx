@@ -4,23 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsCmdLine, setWordList, setTimerId } from "../store/actions";
 import { recordTest } from "../helpers/recordTest";
 import Result from "../components/Result";
-import { setCurrentCommands, defalutCommands } from "../helpers/commandline-lists";
+import {
+    setCurrentCommands,
+    defalutCommands,
+} from "../helpers/commandline-lists";
 import Timer from "../components/Timer";
 
 function Home() {
     const {
         time: { timerId, timer },
-        word: { currWord, typedWord, activeWordRef },
-        toggle: { isCmdLine },
+        word: { currWord, typedWord, activeWordRef, wordList },
+        toggle: { isCmdLine, testDone },
+        preferences: { mode },
     } = useSelector((state) => state);
     const dispatch = useDispatch();
-
-    // add wordList
-    useEffect(() => {
-        import(`../wordlist/words.json`).then((words) => {
-            dispatch(setWordList(words.default));
-        });
-    }, [dispatch]);
+    const currIdx = wordList.indexOf(currWord);
 
     // keydown event
     useEffect(() => {
@@ -61,7 +59,7 @@ function Home() {
         const currWordEl = activeWordRef?.current;
         if (currWordEl && idx < currWord.length)
             currWordEl.children[idx + 1].classList.remove("wrong", "right");
-    }, [currWord.length, typedWord, activeWordRef]);
+    }, [currWord?.length, typedWord, activeWordRef]);
 
     //timer
     useEffect(() => {
@@ -74,7 +72,19 @@ function Home() {
     return (
         <>
             <Timer />
-            {Math.ceil(timer) !== 0 ? <Test /> : <Result />}
+            {mode === "time" ? (
+                Math.ceil(timer) !== 0 ? (
+                    <Test />
+                ) : (
+                    <Result />
+                )
+            ) : mode === "words" ? (
+                testDone ? (
+                    <Result />
+                ) : (
+                    <Test />
+                )
+            ) : null}
         </>
     );
 }

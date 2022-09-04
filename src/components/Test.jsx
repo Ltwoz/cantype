@@ -11,7 +11,7 @@ function Test() {
     const dispatch = useDispatch();
     const extraLetters =
         typeof typedWord === "string" &&
-        typedWord.slice(currWord.length).split("");
+        typedWord.slice(currWord?.length).split("");
     const activeWord = useRef(null);
     const caretRef = useRef(null);
 
@@ -24,7 +24,7 @@ function Test() {
         <div className="typingTest">
             <div className="timer" style={{opacity: timerId ? 1 : 0}}>{Math.ceil(timer)}</div>
             <div className="wordWrapper">
-                <div className="type-box" style={layout === "multi" ? {"flexWrap":"wrap", "height": "156px"} : null}>
+                <div className="type-box" style={layout === "multi" ? {"flexWrap":"wrap"} : null}>
                     {wordList.map((word, idx) => {
                         const isActive =
                             currWord +

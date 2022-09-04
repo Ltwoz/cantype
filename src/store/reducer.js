@@ -15,18 +15,25 @@ import {
     SET_MODE,
     SET_LAYOUT,
     SET_IS_CMDLINE,
-    SET_IS_THEME
+    SET_IS_THEME,
+    SET_WORDS_CONFIG,
+    SET_TEST_ACTIVE,
+    SET_TEST_DONE,
+    SET_TEST_START,
+    SET_TEST_END,
 } from "./actions";
 
 export const initialState = {
     time: {
         timer: 30,
         timerId: null,
+        testStart: null,
+        testEnd: null,
     },
     word: {
         currWord: "",
         typedWord: "",
-        typedHistory: "",
+        typedHistory: [],
         wordList: [],
         activeWordRef: null,
         caretRef: null,
@@ -36,11 +43,14 @@ export const initialState = {
         timeLimit: 30,
         mode: "time",
         layout: "multi",
+        wordsConfig: 25,
     },
     toggle: {
         isCmdLine: false,
         isTheme: false,
-    }
+        testActive: false,
+        testDone: false,
+    },
 };
 
 // Timer Reducer
@@ -52,6 +62,10 @@ const timerReducer = (state = initialState.time, { type, payload }) => {
             return { ...state, timer: payload };
         case TIMERID_SET:
             return { ...state, timerId: payload };
+        case SET_TEST_START:
+            return { ...state, testStart: payload };
+        case SET_TEST_END:
+            return { ...state, testEnd: payload };
         default:
             return state;
     }
@@ -90,30 +104,20 @@ const wordReducer = (state = initialState.word, { type, payload }) => {
         case SET_REF:
             return {
                 ...state,
-                activeWordRef: payload
+                activeWordRef: payload,
             };
         case SET_CARET_REF:
             return {
                 ...state,
-                caretRef: payload
+                caretRef: payload,
             };
         case SET_WORDLIST:
-            const areNotWords = payload.every((word) => {
-                typeof word === "string" && word.includes(" ")
-            });
-            var shuffleWordList = payload?.sort(
-                () => Math.random() - 0.5
-            );
-            if (areNotWords)
-                shuffleWordList = payload.flatMap((token) => 
-                    typeof token === "string" && token.split(" ")
-                );
             return {
                 ...state,
                 typedWord: "",
                 typedHistory: [],
-                currWord: shuffleWordList[0],
-                wordList: shuffleWordList
+                currWord: payload[0],
+                wordList: payload,
             };
         default:
             return state;
@@ -121,31 +125,40 @@ const wordReducer = (state = initialState.word, { type, payload }) => {
 };
 
 // Preference Reducer
-const preferenceReducer = (state = initialState.preferences, {type, payload}) => {
+const preferenceReducer = (
+    state = initialState.preferences,
+    { type, payload }
+) => {
     switch (type) {
         case SET_THEME:
-            return {...state, theme: payload};
+            return { ...state, theme: payload };
         case SET_TIME:
-            return {...state, timeLimit: payload};
+            return { ...state, timeLimit: payload };
         case SET_MODE:
-            return {...state, mode: payload};
+            return { ...state, mode: payload };
         case SET_LAYOUT:
-            return {...state, layout: payload};
+            return { ...state, layout: payload };
+        case SET_WORDS_CONFIG:
+            return { ...state, wordsConfig: payload };
         default:
             return state;
     }
-}
+};
 
-const toggleReducer = (state = initialState.toggle, {type, payload}) => {
+const toggleReducer = (state = initialState.toggle, { type, payload }) => {
     switch (type) {
         case SET_IS_CMDLINE:
-            return {...state, isCmdLine: payload}
+            return { ...state, isCmdLine: payload };
         case SET_IS_THEME:
-            return {...state, isTheme: payload}
+            return { ...state, isTheme: payload };
+        case SET_TEST_ACTIVE:
+            return { ...state, testActive: payload };
+        case SET_TEST_DONE:
+            return { ...state, testDone: payload };
         default:
             return state;
     }
-}
+};
 
 export default combineReducers({
     time: timerReducer,

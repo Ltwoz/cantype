@@ -1,22 +1,25 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setTestActive, setTestEnd } from "../store/actions";
 import { ResetButton } from "./ResetButton";
 
 function Result() {
     const {
+        time: { testStart, testEnd },
         word: { wordList, typedHistory, currWord },
         preferences: { timeLimit, mode },
     } = useSelector((state) => state);
+    const dispatch = useDispatch();
+
+    const [wpm, setWpm] = useState(0);
+    const [acc, setAcc] = useState(0);
 
     let totalChars = 0;
     let correctChars = 0;
     let incorrectChars = 0;
-    let wpm = 0;
-    let testStart, testEnd;
-    let testSecond = (testEnd - testStart) / 1000;
 
     const spaces = wordList.indexOf(currWord);
-    const result = typedHistory.map((typedWord, idx) => {
+    const result = typedHistory?.map((typedWord, idx) => {
         typedWord === wordList[idx];
     });
 
@@ -36,12 +39,23 @@ function Result() {
             }
         }
     }
-    if (mode === "time") {
-        wpm = Math.round(((correctChars + spaces) * 60) / timeLimit / 5);
-    } else if (mode === "words" || mode === "custom") {
-        wpm = Math.round(((correctChars + spaces) * 60) / testSecond / 5);
-    }
-    const acc = Math.round((correctChars / totalChars) * 100);
+
+    useEffect(() => {
+        if (mode === "time") {
+            setWpm(Math.round(((correctChars + spaces) * 60) / timeLimit / 5));
+        } else if (mode === "words" || mode === "custom") {
+            const endTime = Date.now()
+            const testDiff = (endTime - testStart) / 1000;
+
+            console.log("testDiff : ",testDiff);
+            console.log("testStart : ",testStart);
+            console.log("testEnd : ", endTime);
+            
+            dispatch(setTestEnd(endTime));
+            setWpm(Math.round(((correctChars + spaces) * 60) / testDiff / 5));
+        }
+        setAcc(Math.round((correctChars / totalChars) * 100));
+    }, []);
 
     useEffect(() => {
         console.log("-----------------------");

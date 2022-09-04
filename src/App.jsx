@@ -8,6 +8,8 @@ import Theme from "./components/Theme";
 import { useSelector, useDispatch } from "react-redux";
 import CommandLine from "./components/CommandLine";
 import { setIsTheme } from "./store/actions";
+import { setLayoutConfig, setModeConfig, setTimeConfig, setWordsLimitConfig } from "./helpers/config";
+import { initWords } from "./helpers/initWords";
 
 function App() {
     const {
@@ -23,6 +25,20 @@ function App() {
             }
         }
     }, [isCmdLine])
+
+    useEffect(() => {
+        const time = localStorage.getItem("time") || 30;
+        const type = localStorage.getItem("type") || "time";
+        const wordsConfig = localStorage.getItem("wordsConfig") || 25;
+        const layout = localStorage.getItem("layout") || "multi";
+
+        setTimeConfig(time);
+        setModeConfig(type);
+        setWordsLimitConfig(wordsConfig);
+        setLayoutConfig(layout);
+
+        initWords(type, wordsConfig);
+    }, [dispatch])
 
     return (
         <div className="App">

@@ -7,9 +7,7 @@ function About() {
             <div className="section">
                 <div className="title">about</div>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Sed fuga perferendis recusandae dolore animi reiciendis
-                    numquam mollitia veritatis dolorem! Cumque?
+                    เว็บไซต์สำหรับทดสอบการพิมพ์
                 </p>
             </div>
             <div className="section">
@@ -34,9 +32,9 @@ function About() {
             </div>
             <div className="section">
                 <h1>contributors</h1>
-                <p>
-                    นายวรภัทร เชิดชูสกุลรัตน์
-                </p>
+                <p>นายนพวิทย์ เอื้องเงินวิไล 014</p>
+                <p>นายภาคิน โสมศุภผล 025</p>
+                <p>นายวรภัทร เชิดชูสกุลรัตน์ 032</p>
             </div>
         </div>
     );

@@ -1,12 +1,21 @@
-import { setTimerId, setWordList, timerSet } from "../store/actions";
+import {
+    setTestActive,
+    setTestDone,
+    setTestEnd,
+    setTestStart,
+    setTimerId,
+    timerSet,
+} from "../store/actions";
 import { store } from "../store/store";
+import { initWords } from "./initWords";
 
 export const resetTest = async () => {
     const { dispatch, getState } = store;
 
     const {
-        time: { timerId },
-        preferences: { timeLimit }
+        time: { timerId, testStart, testEnd },
+        preferences: { timeLimit, mode, wordsConfig },
+        toggle: { testActive, testDone },
     } = getState();
 
     document
@@ -17,9 +26,21 @@ export const resetTest = async () => {
         clearInterval(timerId);
         dispatch(setTimerId(null));
     }
+    if (testStart) {
+        dispatch(setTestStart(null));
+    }
+    if (testEnd) {
+        dispatch(setTestEnd(null));
+    }
+    if (mode === "words") {
+        if (testDone === true) {
+            dispatch(setTestDone(false));
+        }
+        if (testActive === true) {
+            dispatch(setTestActive(false));
+        }
+    }
 
-    import(`../wordlist/words.json`).then((words) => {
-        dispatch(setWordList(words.default));
-    });
+    initWords(mode, wordsConfig);
     dispatch(timerSet(timeLimit));
 };

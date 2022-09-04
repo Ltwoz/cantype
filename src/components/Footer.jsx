@@ -6,7 +6,7 @@ function Footer() {
     return (
         <div className="footer">
             <div className="left-footer">
-                <Link to="/" className="textButton">
+                <a href="mailto:warrapat.cho@gmail.com" className="textButton">
                     <FaEnvelope
                         style={{
                             marginRight: ".5rem",
@@ -14,7 +14,7 @@ function Footer() {
                         }}
                     />
                     <div className="text">Contact</div>
-                </Link>
+                </a>
                 <a
                     href="https://github.com/Ltwoz/cantype"
                     target="_blank"
@@ -44,7 +44,9 @@ function Footer() {
                     target="_blank"
                     className="textButton"
                 >
-                    <div style={{ "fontFamily": "'Noto Sans Thai', sans-serif" }}>วิทยาลัยเทคนิคเชียงใหม่ แผนกเทคโนโลยีสารสนเทศ</div>
+                    <div style={{ fontFamily: "'Noto Sans Thai', sans-serif" }}>
+                        วิทยาลัยเทคนิคเชียงใหม่ แผนกเทคโนโลยีสารสนเทศ
+                    </div>
                 </a>
             </div>
         </div>

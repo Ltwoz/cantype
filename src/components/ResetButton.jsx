@@ -12,7 +12,7 @@ export function ResetButton(props) {
 
     const reset = () => {
         resetTest();
-        document.getElementsByClassName("word")[0].scrollIntoView();
+        // document.getElementsByClassName("word")[0].scrollIntoView();
     };
     const endReset = () => {
         resetTest();

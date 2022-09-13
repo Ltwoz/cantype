@@ -1,8 +1,23 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { RiBracesFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 function Footer() {
+    const [small, setSmall] = useState(
+        window.matchMedia("(max-width: 380px)").matches
+    );
+    const [medium, setMedium] = useState(window.matchMedia("(max-width: 768px)").matches)
+    useEffect(() => {
+        window
+            .matchMedia("(max-width: 380px)")
+            .addEventListener("change", (e) => setSmall(e.matches));
+        window
+            .matchMedia("(max-width: 768px)")
+            .addEventListener("change", (e) => setMedium(e.matches));
+    }, [window]);
+
     return (
         <div className="footer">
             <div className="left-footer">
@@ -44,8 +59,11 @@ function Footer() {
                     target="_blank"
                     className="textButton"
                 >
-                    <div style={{ fontFamily: "'Noto Sans Thai', sans-serif" }}>
-                        วิทยาลัยเทคนิคเชียงใหม่ แผนกเทคโนโลยีสารสนเทศ
+                    <div
+                        className="text"
+                        style={{ fontFamily: "'Noto Sans Thai', sans-serif" }}
+                    >
+                        {small ? `เทคนิคเชียงใหม่` : medium ? `วิทยาลัยเทคนิคเชียงใหม่` : `วิทยาลัยเทคนิคเชียงใหม่ แผนกเทคโนโลยีสารสนเทศ`}
                     </div>
                 </a>
             </div>

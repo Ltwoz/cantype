@@ -38,3 +38,17 @@
         }
     }
 }
+
+@media screen and (max-width: v.$medium) {
+    .theme-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .theme-area {
+            display: grid;
+            width: 60%;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

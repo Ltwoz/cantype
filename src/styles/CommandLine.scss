@@ -89,3 +89,15 @@
         }
     }
 }
+
+@media screen and (max-width: v.$medium) {
+    .commandLineWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .commandLine {
+            width: 60%;
+        }
+    }
+}

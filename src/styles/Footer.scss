@@ -9,13 +9,35 @@
         align-items: center;
         text-decoration: none;
         color: var(--font-color);
+        transition: .25s;
+
+        &:hover {
+            color: var(--hl-color);
+        }
+
+        .text {
+            position: relative;
+            top: -1.5px;
+        }
     }
 
     .left-footer {
         display: flex;
-        
-        & > * {
+
+        &>* {
             margin-right: 1.5rem;
+        }
+    }
+}
+
+@media screen and (max-width: v.$small ) {
+    .footer {
+        margin-bottom: 0;
+
+        .left-footer {
+            .text {
+                display: none;
+            }
         }
     }
 }

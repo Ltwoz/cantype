@@ -3,6 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { setTestActive, setTestEnd } from "../store/actions";
 import { ResetButton } from "./ResetButton";
 
+import rmWpm1 from "../public/resultMascot/rmWpm1.png";
+import rmAcc1 from "../public/resultMascot/rmAcc1.png";
+import rmCor1 from "../public/resultMascot/rmCor1.png";
+import rmErr1 from "../public/resultMascot/rmErr1.png";
+import { RmAcc1C, RmCor1C, RmErr1C, RmWpm1C, } from "./resultMascot";
+
 function Result() {
     const {
         time: { testStart, testEnd },
@@ -71,19 +77,31 @@ function Result() {
 
             <div className="stats">
                 <div className="wpm">
-                    <div className="img">wpm</div>
+                    <div className="img">
+                        <img src={rmWpm1} style={{ zIndex: 2 }} alt="main" />
+                        <RmWpm1C fill="var(--hl-color)" zIndex={1} />
+                    </div>
                     <p>{`${wpm} wpm`}</p>
                 </div>
                 <div className="acc">
-                    <div className="img">acc</div>
+                    <div className="img">
+                        <img src={rmAcc1} style={{ zIndex: 2 }} alt="" />
+                        <RmAcc1C fill="var(--hl-color)" zIndex={1} />
+                    </div>
                     <p>{`${isNaN(acc) ? "100" : acc}%`}</p>
                 </div>
                 <div className="correct">
-                    <div className="img">correct chars</div>
+                    <div className="img">
+                        <img src={rmCor1} style={{ zIndex: 2 }} alt="" />
+                        <RmCor1C fill="var(--hl-color)" zIndex={1} />
+                    </div>
                     <p>{correctChars}</p>
                 </div>
                 <div className="incorrect">
-                    <div className="img">incorrect chars</div>
+                    <div className="img">
+                        <img src={rmErr1} style={{ zIndex: 2 }} alt="" />
+                        <RmErr1C fill="var(--hl-color)" zIndex={1} />
+                    </div>
                     <p>{incorrectChars}</p>
                 </div>
             </div>

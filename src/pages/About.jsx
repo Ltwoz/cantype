@@ -1,40 +1,37 @@
 import React from "react";
 
 function About() {
+    const monkeytype = (
+        <a href="https://monkeytype.com/" target="_blank">
+            Monkeytype
+        </a>
+    );
+
     return (
         <div className="about">
             {/* section */}
             <div className="section">
-                <div className="title">about</div>
-                <p>
-                    เว็บไซต์สำหรับทดสอบการพิมพ์
+                <h1>เกี่ยวกับ</h1>
+                <p style={{ textIndent: "4rem" }}>
+                    Cantype เว็บไซต์สำหรับทดสอบความเร็วการพิมพ์
+                    เป็นโปรเจคของนักศึกษา ชั้นประกาศนียบัตรวิชาชีพปีที่ 3
+                    (ปวช.3) แผนกเทคโนโลยีสารสนเทศ วิทยาลัยเทคนิคเชียงใหม่
+                    ปีการศึกษา 2565 โดยเว็บไซต์นี้ได้แรงบันดาลใจมาจากเว็บไซต์ของต่างประเทศ{" "}
+                    {monkeytype} เพราะทางผู้พัฒนาก็มีความชอบการพิมพ์อยู่แล้ว
+                    จึงได้ทำเว็บไซต์สำหรับทดสอบความเร็วการพิมพ์ขึ้นมา
+                    เพื่อท้าทายความสามารถของตัวเอง
+                </p>
+                <p style={{ textIndent: "4rem" }}>
+                    
                 </p>
             </div>
             <div className="section">
-                <h1>stats</h1>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Repellendus laborum amet, neque rerum, placeat reprehenderit
-                    maiores veniam libero consequuntur rem, suscipit aut. Rerum
-                    veritatis officiis nulla cumque minus delectus ut dolore
-                    ipsum distinctio odit? Aspernatur alias enim assumenda natus
-                    deleniti aperiam amet hic! Rerum, modi aut? Omnis excepturi
-                    nemo ratione!
-                </p>
-            </div>
-            <div className="section">
-                <h1>bug report</h1>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Provident iure nobis eum nam enim, veritatis sint eligendi
-                    dolorum necessitatibus dolores?
-                </p>
-            </div>
-            <div className="section">
-                <h1>contributors</h1>
-                <p>นายนพวิทย์ เอื้องเงินวิไล 014</p>
-                <p>นายภาคิน โสมศุภผล 025</p>
-                <p>นายวรภัทร เชิดชูสกุลรัตน์ 032</p>
+                <h1>จัดทำโดย</h1>
+                <div className="contributors">
+                    <p>นาย นพวิทย์ เอื้องเงินวิไล 014</p>
+                    <p>นาย ภาคิน โสมศุภผล 025</p>
+                    <p>นาย วรภัทร เชิดชูสกุลรัตน์ 032</p>
+                </div>
             </div>
         </div>
     );

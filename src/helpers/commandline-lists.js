@@ -64,18 +64,18 @@ const commandsTimeConfig = {
                 resetTest();
             },
         },
-        {
-            id: "changeTimeConfigCustom",
-            display: "custom",
-            input: true,
-            exec: (input) => {
-                if (!input) return;
-                console.log("changed time custom");
-                setTimeConfig(parseInt(input));
-                setModeConfig("time");
-                resetTest();
-            },
-        },
+        // {
+        //     id: "changeTimeConfigCustom",
+        //     display: "custom",
+        //     input: true,
+        //     exec: (input) => {
+        //         if (!input) return;
+        //         console.log("changed time custom");
+        //         setTimeConfig(parseInt(input));
+        //         setModeConfig("time");
+        //         resetTest();
+        //     },
+        // },
     ],
 };
 
@@ -102,16 +102,16 @@ const commandsTypeConfig = {
                 resetTest();
             },
         },
-        {
-            id: "changeTypeConfigCustom",
-            display: "custom",
-            configValue: "custom",
-            exec: () => {
-                console.log("change type custom");
-                setModeConfig("custom"); 
-                resetTest();
-            },
-        },
+        // {
+        //     id: "changeTypeConfigCustom",
+        //     display: "custom",
+        //     configValue: "custom",
+        //     exec: () => {
+        //         console.log("change type custom");
+        //         setModeConfig("custom"); 
+        //         resetTest();
+        //     },
+        // },
     ],
 };
 

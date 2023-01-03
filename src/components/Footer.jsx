@@ -19,13 +19,6 @@ function Footer() {
             .addEventListener("change", (e) => setMedium(e.matches));
     }, [window]);
 
-    useEffect(() => {
-        document.addEventListener('click', handleMenu);
-        return () => {
-            document.removeEventListener('click', handleMenu);
-        };
-    }, []);
-
     const handleMenu = (e) => {
         e.stopPropagation();
         setIsMenu(() => !isMenu)

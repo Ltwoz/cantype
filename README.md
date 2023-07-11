@@ -1,5 +1,6 @@
 # cantype
-a typing test website.
+A typing test website.
+This website is student project for Chiang Mai Technical College.
 
 ![screenshot](screenshot.png)
 

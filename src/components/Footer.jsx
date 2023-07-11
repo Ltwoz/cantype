@@ -5,6 +5,7 @@ import { RiBracesFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 function Footer() {
+    const [isMenu, setIsMenu] = useState(false);
     const [small, setSmall] = useState(
         window.matchMedia("(max-width: 380px)").matches
     );
@@ -17,6 +18,11 @@ function Footer() {
             .matchMedia("(max-width: 768px)")
             .addEventListener("change", (e) => setMedium(e.matches));
     }, [window]);
+
+    const handleMenu = (e) => {
+        e.stopPropagation();
+        setIsMenu(() => !isMenu)
+    }
 
     return (
         <div className="footer">
@@ -43,7 +49,7 @@ function Footer() {
                     />
                     <div className="text">github</div>
                 </a>
-                <Link to="/" className="textButton">
+                <a onClick={handleMenu} className="textButton">
                     <RiBracesFill
                         style={{
                             marginRight: ".4rem",
@@ -51,7 +57,14 @@ function Footer() {
                         }}
                     />
                     <div className="text">contributors</div>
-                </Link>
+                </a>
+                {isMenu && (
+                    <div className="contributors-group">
+                        <p>นาย นพวิทย์ เอื้องเงินวิไล</p>
+                        <p>นาย ภาคิน โสมศุภผล</p>
+                        <p>นาย วรภัทร เชิดชูสกุลรัตน์</p>
+                    </div>
+                )}
             </div>
             <div className="right-footer">
                 <a

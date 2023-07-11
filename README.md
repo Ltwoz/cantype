@@ -1,6 +1,8 @@
 # cantype
 a typing test website.
 
+![screenshot](screenshot.png)
+
 ## command Pallet
 press <kbd>esc</kbd> to open command pallet. or click on cog icon
 
